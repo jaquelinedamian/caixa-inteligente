@@ -474,3 +474,8 @@ def gerar_dados_teste():
     db.session.commit()
 
     return redirect(url_for("main.home"))
+
+
+@main_bp.route("/recuperar-senha")
+def recuperar_senha():
+    return render_template("pages/recuperar-senha.html", page_title="Recuperar senha")
