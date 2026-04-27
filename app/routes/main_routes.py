@@ -479,3 +479,19 @@ def gerar_dados_teste():
 @main_bp.route("/recuperar-senha")
 def recuperar_senha():
     return render_template("pages/recuperar-senha.html", page_title="Recuperar senha")
+
+
+    @main.route("/")
+@main.route("/pagina-inicial")
+def pagina_inicial():
+    return render_template("pages/home.html", page_title="Página Inicial")
+
+
+@main.route("/como-funciona")
+def como_funciona():
+    return render_template("pages/como-funciona.html", page_title="Como funciona")
+
+
+@main.route("/suporte")
+def suporte():
+    return render_template("pages/suporte.html", page_title="Fale conosco")
