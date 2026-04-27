@@ -1,0 +1,152 @@
+/* =========================================================
+   TOKENS - TYPOGRAPHY
+   Projeto TCC
+   ========================================================= */
+
+/* ================================
+   IMPORTAÇÃO DA FONTE
+================================= */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+
+:root {
+  /* ================================
+     FONT FAMILY
+  ================================= */
+  --font-family-base: 'Montserrat', sans-serif;
+
+  /* ================================
+     FONT WEIGHT
+  ================================= */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extra-bold: 800;
+
+  /* ================================
+     FONT SIZE (ESCALA)
+  ================================= */
+  --font-size-xs: 1rem;   /* 12px */
+  --font-size-sm: 1rem;  /* 14px */
+  --font-size-base: 1rem;    /* 16px */
+  --font-size-md: 1rem;  /* 18px */
+  --font-size-lg: 1.5rem;   /* 20px */
+  --font-size-xl: 2.5rem;    /* 24px */
+  --font-size-2xl: 1.875rem; /* 30px */
+  --font-size-3xl: 2.25rem;  /* 36px */
+
+  /* ================================
+     LINE HEIGHT
+  ================================= */
+  --line-height-tight: 1.2;
+  --line-height-base: 1.5;
+  --line-height-relaxed: 1.7;
+
+  /* ================================
+     LETTER SPACING
+  ================================= */
+  --letter-spacing-tight: -0.01em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.02em;
+}
+
+/* =========================================================
+   HEADINGS
+   ========================================================= */
+
+h1, .heading-1 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+h2, .heading-2 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+}
+
+h3, .heading-3 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+h4, .heading-4 {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+}
+
+h5, .heading-5 {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+}
+
+h6, .heading-6 {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* =========================================================
+   TEXTOS
+   ========================================================= */
+
+.text-base {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+}
+
+.text-sm {
+  font-size: var(--font-size-sm);
+}
+
+.text-xs {
+  font-size: var(--font-size-xs);
+}
+
+.text-lg {
+  font-size: var(--font-size-lg);
+}
+
+.text-muted {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* =========================================================
+   TEXTOS ESPECÍFICOS DO SISTEMA
+   ========================================================= */
+
+/* Labels de formulário */
+.label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Texto de apoio */
+.helper-text {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+/* Texto de destaque (cards, status, etc) */
+.text-highlight {
+  font-weight: var(--font-weight-semibold);
+}
+
+/* =========================================================
+   ACESSIBILIDADE
+   ========================================================= */
+
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+}
+
+/* Melhora leitura para idosos */
+p {
+  margin-bottom: 0.75rem;
+  line-height: var(--line-height-relaxed);
+}

@@ -1,0 +1,101 @@
+/* =========================================================
+   TOKENS - COLORS
+   Projeto TCC
+   ========================================================= */
+
+:root {
+  /* ================================
+     CORES PRINCIPAIS
+  ================================= */
+  --color-primary: #0d6efd;
+  --color-primary-dark: #0042be;
+  --color-primary-light: #dbe7ff;
+
+  --color-secondary: #5b8def;
+  --color-secondary-dark: #3d6fcb;
+  --color-secondary-light: #eaf1ff;
+
+  /* ================================
+     CORES DE DESTAQUE
+  ================================= */
+  --color-accent: #f2c94c;
+  --color-accent-dark: #d4aa2f;
+  --color-accent-light: #fff4cc;
+
+  /* ================================
+     BACKGROUNDS E SUPERFÍCIES
+  ================================= */
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
+  --color-surface-soft: #f4f6f8;
+  --color-surface-muted: #eef2f7;
+
+  /* ================================
+     TEXTOS
+  ================================= */
+  --color-text-primary: #0b1f2a;
+  --color-text-secondary: #4a5568;
+  --color-text-muted: #718096;
+  --color-text-inverse: #ffffff;
+
+  /* ================================
+     BORDAS E DIVISORES
+  ================================= */
+  --color-border: #d9e2ec;
+  --color-border-strong: #b8c5d6;
+  --color-divider: #e9eef5;
+
+  /* ================================
+     ESTADOS
+  ================================= */
+  --color-success: #2e7d32;
+  --color-success-light: #e8f5e9;
+
+  --color-warning: #ed8936;
+  --color-warning-light: #fff4e6;
+
+  --color-danger: #c53030;
+  --color-danger-light: #fdecec;
+
+  --color-info: #3182ce;
+  --color-info-light: #ebf8ff;
+
+  /* ================================
+     STATUS DO SISTEMA
+  ================================= */
+  --color-status-active: #2e7d32;
+  --color-status-pending: #ed8936;
+  --color-status-cancelled: #c53030;
+  --color-status-scheduled: #3182ce;
+  --color-status-completed: #4a5568;
+  --color-status-rebooked: #805ad5;
+
+  /* ================================
+     ALERTAS E EMERGÊNCIA
+  ================================= */
+  --color-alert: #dd6b20;
+  --color-alert-light: #fff7ed;
+
+  --color-emergency: #b00020;
+  --color-emergency-light: #fde8ec;
+
+  /* ================================
+     OVERLAYS E SOMBRAS VISUAIS
+  ================================= */
+  --color-overlay-dark: rgba(11, 31, 42, 0.6);
+  --color-overlay-soft: rgba(11, 31, 42, 0.3);
+
+  /* ================================
+     CORES DE APOIO PARA ACESSIBILIDADE
+  ================================= */
+  --color-focus-ring: #2f5aa6;
+  --color-disabled-bg: #e2e8f0;
+  --color-disabled-text: #94a3b8;
+
+  
+}
+
+:root {
+  --gradient-background-default: linear-gradient(135deg, #f4f7fb, #e9eff7);
+  --gradient-background-auth: linear-gradient(135deg, #eef2f7, #dde5f0);
+}

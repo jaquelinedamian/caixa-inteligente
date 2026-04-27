@@ -1,0 +1,98 @@
+<header class="bg-primary text-white sticky-top shadow-sm">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark py-3">
+
+      <a
+        href="{{ url_for('main.home') }}"
+        class="navbar-brand d-flex align-items-center gap-2 fw-bold"
+      >
+        <span class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle" style="width: 36px; height: 36px;">
+          <i class="bi bi-box-seam text-primary"></i>
+        </span>
+        Caixa Inteligente
+      </a>
+
+      <div class="mx-auto d-none d-lg-block">
+        <strong>{{ page_title|default('Home') }}</strong>
+      </div>
+
+      <button
+        class="navbar-toggler border-white"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#menuAuth"
+        aria-controls="menuAuth"
+        aria-label="Abrir menu"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="d-none d-lg-flex align-items-center gap-3">
+        <a href="{{ url_for('main.home') }}" class="text-white text-decoration-none">Home</a>
+        <a href="{{ url_for('main.horarios') }}" class="text-white text-decoration-none">Horários</a>
+        <a href="{{ url_for('main.historico') }}" class="text-white text-decoration-none">Histórico</a>
+        <a href="{{ url_for('main.dispositivos') }}" class="text-white text-decoration-none">Dispositivos</a>
+        <a href="{{ url_for('main.perfil') }}" class="text-white text-decoration-none">Perfil</a>
+        <a href="{{ url_for('main.logout') }}" class="btn btn-light btn-sm text-primary">Sair</a>
+      </div>
+
+    </nav>
+  </div>
+</header>
+
+<div
+  class="offcanvas offcanvas-end"
+  tabindex="-1"
+  id="menuAuth"
+  aria-labelledby="menuAuthLabel"
+>
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title fw-bold" id="menuAuthLabel">
+      Caixa Inteligente
+    </h5>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+      aria-label="Fechar"
+    ></button>
+  </div>
+
+  <div class="offcanvas-body">
+    <nav class="nav flex-column gap-2">
+      <a href="{{ url_for('main.home') }}" class="nav-link text-dark">
+        <i class="bi bi-house me-2"></i>Home
+      </a>
+
+      <a href="{{ url_for('main.horarios') }}" class="nav-link text-dark">
+        <i class="bi bi-clock me-2"></i>Horários
+      </a>
+
+      <a href="{{ url_for('main.historico') }}" class="nav-link text-dark">
+        <i class="bi bi-graph-up me-2"></i>Histórico
+      </a>
+
+      <a href="{{ url_for('main.dispositivos') }}" class="nav-link text-dark">
+        <i class="bi bi-box-seam me-2"></i>Dispositivos
+      </a>
+
+      <a href="{{ url_for('main.configuracao_dispositivo') }}" class="nav-link text-dark">
+        <i class="bi bi-sliders me-2"></i>Configurar caixa
+      </a>
+
+      <a href="{{ url_for('main.simular_arduino') }}" class="nav-link text-dark">
+        <i class="bi bi-cpu me-2"></i>Simular Arduino
+      </a>
+
+      <a href="{{ url_for('main.perfil') }}" class="nav-link text-dark">
+        <i class="bi bi-person me-2"></i>Perfil
+      </a>
+
+      <hr>
+
+      <a href="{{ url_for('main.logout') }}" class="btn btn-outline-danger">
+        Sair
+      </a>
+    </nav>
+  </div>
+</div>

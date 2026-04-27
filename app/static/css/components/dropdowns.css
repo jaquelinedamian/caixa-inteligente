@@ -1,0 +1,283 @@
+/* =========================================================
+   COMPONENTS - DROPDOWNS
+   Projeto TCC
+   ========================================================= */
+
+/* ================================
+   WRAPPER
+================================= */
+.dropdown-app {
+  position: relative;
+}
+
+/* ================================
+   TOGGLE
+================================= */
+.dropdown-toggle-app {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+
+  width: 100%;
+  min-height: 44px;
+  padding: var(--spacing-input-padding-y) var(--spacing-input-padding-x);
+
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-input);
+
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-base);
+  text-align: left;
+
+  box-shadow: none;
+  cursor: pointer;
+  transition: var(--transition-interactive);
+}
+
+.dropdown-toggle-app:hover {
+  border-color: var(--color-border-strong);
+  background-color: var(--color-surface);
+}
+
+.dropdown-toggle-app:focus,
+.dropdown-toggle-app:focus-visible {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-focus);
+}
+
+.dropdown-toggle-app::after {
+  content: "";
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%234A5568' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 1rem;
+  transition: var(--transition-transform);
+}
+
+.dropdown-toggle-app[aria-expanded="true"]::after,
+.dropdown-app.is-open .dropdown-toggle-app::after {
+  transform: rotate(180deg);
+}
+
+/* ================================
+   MENU
+================================= */
+.dropdown-menu-app {
+  position: absolute;
+  top: calc(100% + var(--spacing-xs));
+  left: 0;
+  z-index: 1000;
+
+  min-width: 100%;
+  width: max-content;
+  max-width: 320px;
+
+  padding: var(--spacing-xs);
+  margin: 0;
+
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-dropdown);
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(4px);
+  pointer-events: none;
+
+  transition: var(--transition-visibility), var(--transition-transform);
+}
+
+.dropdown-menu-app.dropdown-menu-right {
+  left: auto;
+  right: 0;
+}
+
+.dropdown-app.is-open .dropdown-menu-app,
+.dropdown-toggle-app[aria-expanded="true"] + .dropdown-menu-app {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* ================================
+   ITENS
+================================= */
+.dropdown-item-app {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+
+  width: 100%;
+  min-height: 40px;
+  padding: 0.625rem 0.875rem;
+
+  background-color: transparent;
+  color: var(--color-text-primary);
+
+  border: 0;
+  border-radius: var(--radius-md);
+
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  text-align: left;
+  text-decoration: none;
+
+  cursor: pointer;
+  transition: var(--transition-interactive);
+}
+
+.dropdown-item-app:hover,
+.dropdown-item-app:focus-visible {
+  background-color: var(--color-surface-soft);
+  color: var(--color-primary-dark);
+  outline: none;
+}
+
+.dropdown-item-app:active {
+  transform: translateY(1px);
+}
+
+.dropdown-item-app.active,
+.dropdown-item-app.is-active {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
+}
+
+/* ================================
+   ÍCONE E TEXTO
+================================= */
+.dropdown-item-icon-app {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  color: var(--color-text-muted);
+}
+
+.dropdown-item-text-app {
+  flex: 1 1 auto;
+}
+
+.dropdown-item-meta-app {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+/* ================================
+   DIVISOR
+================================= */
+.dropdown-divider-app {
+  width: 100%;
+  height: 1px;
+  margin: var(--spacing-xs) 0;
+  background-color: var(--color-divider);
+}
+
+/* ================================
+   HEADER / LABEL
+================================= */
+.dropdown-header-app {
+  display: block;
+  padding: 0.5rem 0.875rem 0.375rem;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* ================================
+   ESTADOS ESPECIAIS
+================================= */
+.dropdown-item-app.is-danger {
+  color: var(--color-danger);
+}
+
+.dropdown-item-app.is-danger:hover,
+.dropdown-item-app.is-danger:focus-visible {
+  background-color: var(--color-danger-light);
+  color: var(--color-danger);
+}
+
+.dropdown-item-app:disabled,
+.dropdown-item-app.disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ================================
+   TAMANHOS
+================================= */
+.dropdown-toggle-app.dropdown-toggle-sm {
+  min-height: 36px;
+  font-size: var(--font-size-xs);
+  border-radius: var(--radius-sm);
+}
+
+.dropdown-toggle-app.dropdown-toggle-lg {
+  min-height: 52px;
+  font-size: var(--font-size-base);
+  padding: 0.75rem 1rem;
+}
+
+/* ================================
+   DROPDOWN DE PERFIL / MENU RÁPIDO
+================================= */
+.dropdown-menu-app.dropdown-menu-profile {
+  min-width: 240px;
+}
+
+.dropdown-profile-summary-app {
+  padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-md);
+}
+
+.dropdown-profile-name-app {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.dropdown-profile-role-app {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  margin-top: 0.125rem;
+}
+
+/* ================================
+   DROPDOWN DE FILTROS
+================================= */
+.dropdown-menu-app.dropdown-menu-filter {
+  min-width: 280px;
+  padding: var(--spacing-sm);
+}
+
+.dropdown-filter-section-app + .dropdown-filter-section-app {
+  margin-top: var(--spacing-sm);
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid var(--color-divider);
+}
+
+/* ================================
+   INTEGRAÇÃO COM BOOTSTRAP
+================================= */
+.dropdown-menu.dropdown-menu-app {
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-dropdown);
+  border-radius: var(--radius-lg);
+}

@@ -1,0 +1,523 @@
+/* =========================================================
+   COMPONENTS - HEADER
+   Projeto TCC
+   ========================================================= */
+
+/* ================================
+   HEADER BASE
+================================= */
+.header-app {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1030;
+
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+
+  background-color: var(  --color-primary);
+ 
+  box-shadow: var(--shadow-header);
+border-bottom-left-radius: 30px;
+border-bottom-right-radius: 30px;
+}
+
+/* Quando o header estiver fixo */
+.header-app.is-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+  box-shadow: var(--shadow-header);
+}
+
+/* Header sem borda */
+.header-app.no-border {
+  border-bottom: 0;
+}
+
+/* ================================
+   TOPBAR / NAVBAR
+================================= */
+.header-app-top {
+  width: 100%;
+}
+
+/* ================================
+   ÁREA DE CONTEXTO / TÍTULO
+================================= */
+.header-app-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+
+  width: 100%;
+  padding: var(--spacing-lg);
+  background-color: var(--color-surface);
+}
+
+.header-app-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.header-app-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+  flex: 0 0 auto;
+}
+
+/* ================================
+   BREADCRUMB
+================================= */
+.header-app-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.header-app-breadcrumb a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: var(--transition-color);
+}
+
+.header-app-breadcrumb a:hover,
+.header-app-breadcrumb a:focus-visible {
+  color: var(--color-primary-dark);
+  outline: none;
+}
+
+.header-app-breadcrumb-separator {
+  color: var(--color-text-muted);
+}
+
+/* ================================
+   TÍTULOS
+================================= */
+.header-app-title {
+  margin: 0;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+}
+
+.header-app-subtitle {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+  max-width: 760px;
+}
+
+/* ================================
+   META INFORMAÇÕES
+================================= */
+.header-app-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-xs);
+}
+
+.header-app-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xxs);
+
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+/* ================================
+   BADGES E ESTADOS NO HEADER
+================================= */
+.header-app-status {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-xs);
+}
+
+/* ================================
+   HEADER DE PÁGINA INTERNA
+================================= */
+.header-app-page {
+  background-color: var(--color-surface);
+}
+
+.header-app-page .header-app-content {
+  padding-top: var(--spacing-lg);
+  padding-bottom: var(--spacing-lg);
+}
+
+/* ================================
+   HEADER DE DASHBOARD
+================================= */
+.header-app-dashboard .header-app-content {
+  padding-top: var(--spacing-xl);
+  padding-bottom: var(--spacing-lg);
+}
+
+/* ================================
+   HEADER COM FUNDO SUAVE
+================================= */
+.header-app-soft,
+.header-app-soft .header-app-content {
+  background-color: var(--color-surface-soft);
+}
+
+/* ================================
+   HEADER DESTACADO
+================================= */
+.header-app-highlight,
+.header-app-highlight .header-app-content {
+  background: linear-gradient(
+    180deg,
+    var(--color-primary-light) 0%,
+    var(--color-surface) 100%
+  );
+}
+
+/* ================================
+   BLOCO DE AÇÕES
+================================= */
+.header-app-action-group {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+/* ================================
+   BUSCA NO HEADER
+================================= */
+.header-app-search {
+  width: 100%;
+  max-width: 360px;
+}
+
+/* ================================
+   RESUMO RÁPIDO NO HEADER
+================================= */
+.header-app-summary {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+}
+
+.header-app-summary-item {
+  min-width: 120px;
+  padding: var(--spacing-sm) var(--spacing-md);
+
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xs);
+}
+
+.header-app-summary-label {
+  display: block;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.header-app-summary-value {
+  display: block;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+/* ================================
+   HEADER COM AVATAR / PERFIL
+================================= */
+.header-app-profile {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+}
+
+.header-app-profile-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-avatar);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.header-app-profile-content {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+/* ================================
+   DIVISÃO INFERIOR
+================================= */
+.header-app-bottom {
+  padding: 0 var(--spacing-lg) var(--spacing-md);
+  background-color: var(--color-surface);
+}
+
+/* ================================
+   RESPONSIVIDADE
+================================= */
+@media (max-width: 991.98px) {
+  .header-app-content {
+    padding: var(--spacing-md);
+    gap: var(--spacing-md);
+  }
+
+  .header-app-title {
+    font-size: var(--font-size-xl);
+  }
+
+  .header-app-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .header-app-bottom {
+    padding: 0 var(--spacing-md) var(--spacing-md);
+  }
+}
+
+@media (max-width: 767.98px) {
+  .header-app-content {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .header-app-profile {
+    align-items: center;
+  }
+
+  .header-app-summary {
+    flex-direction: column;
+  }
+
+  .header-app-summary-item {
+    width: 100%;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .header-app-title {
+    font-size: var(--font-size-lg);
+  }
+
+  .header-app-subtitle {
+    font-size: var(--font-size-xs);
+  }
+
+  .header-app-profile-avatar {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .offcanvas.offcanvas-start {
+    width: 100vw;
+    border-right: 0;
+  }
+
+  body {
+    padding-bottom: 84px;
+  }
+
+  .fixed-bottom .nav-link {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-xs);
+  }
+
+  .fixed-bottom .nav-link.active {
+    color: var(--color-primary);
+  }
+}
+
+/* =========================================================
+   HEADER MOBILE (APP)
+   ========================================================= */
+
+.header-app-mobile {
+  background-color: var(--color-primary);
+  border-bottom-left-radius: var(--radius-xl);
+  border-bottom-right-radius: var(--radius-xl);
+
+  padding-top: var(--spacing-lg);
+  padding-bottom: var(--spacing-lg);
+
+  color: var(--color-text-inverse);
+}
+
+/* Container interno */
+.header-app-mobile .navbar-app {
+  min-height: 72px;
+}
+
+/* Áreas laterais (back / menu) */
+.header-app-mobile .navbar-app-side {
+  width: 48px;
+  min-width: 48px;
+}
+
+/* Botões */
+.header-app-mobile .navbar-app-back,
+.header-app-mobile .navbar-app-toggle {
+  width: 48px;
+  height: 48px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  background: transparent;
+
+  color: var(--color-text-inverse);
+}
+
+/* Botão menu com fundo */
+.header-app-mobile .navbar-app-toggle {
+  background-color: rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius-md);
+}
+
+/* Ícones */
+.navbar-app-back-icon,
+.navbar-app-toggle-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Título */
+.header-app-mobile .navbar-app-title-wrap {
+  flex: 1;
+  padding-left: var(--spacing-sm);
+  padding-right: var(--spacing-sm);
+}
+
+.header-app-mobile .navbar-app-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+
+  color: var(--color-text-inverse);
+  text-align: center;
+}
+
+/* =========================================================
+   MOBILE MENU (DRAWER)
+   ========================================================= */
+
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+
+  background-color: var(--color-overlay-soft);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: var(--transition-default);
+  z-index: 1040;
+}
+
+.mobile-menu-overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Drawer */
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  right: -100%;
+
+  width: 80%;
+  max-width: 320px;
+  height: 100vh;
+
+  background-color: var(--color-surface);
+
+  padding: var(--spacing-lg);
+
+  box-shadow: var(--shadow-lg);
+  transition: var(--transition-default);
+
+  z-index: 1050;
+}
+
+.mobile-drawer.is-open {
+  right: 0;
+}
+
+/* Header do drawer */
+.mobile-drawer-header {
+  margin-bottom: var(--spacing-lg);
+}
+
+.mobile-drawer-title {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+/* Botão fechar */
+.mobile-close-btn {
+  width: 40px;
+  height: 40px;
+
+  border: none;
+  border-radius: var(--radius-md);
+
+  background-color: var(--color-surface-muted);
+  color: var(--color-text-primary);
+}
+
+/* Navegação */
+.mobile-drawer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.mobile-link {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+
+/* Divider */
+.mobile-divider {
+  height: 1px;
+  background-color: var(--color-divider);
+  margin: var(--spacing-sm) 0;
+}
+
+/* Scroll lock */
+body.menu-open {
+  overflow: hidden;
+}

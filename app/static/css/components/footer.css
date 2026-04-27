@@ -1,0 +1,310 @@
+/* =========================================================
+   COMPONENTS - FOOTER
+   Projeto TCC
+   ========================================================= */
+
+/* ================================
+   FOOTER BASE
+================================= */
+.footer-app {
+  width: 100%;
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-divider);
+  color: var(--color-text-secondary);
+}
+
+.footer-app-inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+
+  padding: var(--spacing-lg);
+}
+
+/* ================================
+   BRAND / IDENTIDADE
+================================= */
+.footer-app-brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  min-width: 0;
+  max-width: 320px;
+}
+
+.footer-app-brand-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+
+  border-radius: var(--radius-lg);
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
+
+  font-size: 1rem;
+  font-weight: var(--font-weight-bold);
+}
+
+.footer-app-brand-title {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  line-height: 1.2;
+}
+
+.footer-app-brand-text {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+}
+
+/* ================================
+   COLUNAS
+================================= */
+.footer-app-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xl);
+  flex: 1 1 auto;
+}
+
+.footer-app-column {
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.footer-app-column-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.footer-app-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.footer-app-link {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: var(--transition-color);
+}
+
+.footer-app-link:hover,
+.footer-app-link:focus-visible {
+  color: var(--color-primary-dark);
+  outline: none;
+}
+
+/* ================================
+   RODAPÉ INFERIOR
+================================= */
+.footer-app-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-top: 1px solid var(--color-divider);
+  background-color: var(--color-surface);
+}
+
+.footer-app-copy {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.footer-app-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+/* ================================
+   FOOTER SIMPLES
+================================= */
+.footer-app-simple .footer-app-inner {
+  justify-content: center;
+  text-align: center;
+}
+
+.footer-app-simple .footer-app-brand {
+  align-items: center;
+  max-width: 640px;
+}
+
+.footer-app-simple .footer-app-bottom {
+  justify-content: center;
+}
+
+/* ================================
+   FOOTER DE APP AUTENTICADO
+================================= */
+.footer-app-dashboard {
+  background-color: var(--color-surface);
+}
+
+.footer-app-dashboard .footer-app-inner {
+  padding: var(--spacing-md) var(--spacing-lg);
+  align-items: center;
+}
+
+.footer-app-dashboard .footer-app-brand {
+  max-width: none;
+}
+
+.footer-app-dashboard .footer-app-columns {
+  justify-content: flex-end;
+  gap: var(--spacing-lg);
+}
+
+/* ================================
+   FOOTER FIXO INFERIOR MOBILE
+================================= */
+.footer-app-mobile-nav {
+  position: sticky;
+  bottom: 0;
+  z-index: 1020;
+
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-divider);
+  box-shadow: 0 -4px 16px rgba(11, 31, 42, 0.06);
+}
+
+.footer-app-mobile-nav-inner {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-around;
+  gap: var(--spacing-xs);
+
+  min-height: 64px;
+  padding: 0.375rem var(--spacing-sm);
+}
+
+.footer-app-mobile-link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+
+  flex: 1 1 0;
+  min-width: 0;
+
+  padding: 0.375rem 0.25rem;
+  border-radius: var(--radius-md);
+
+  color: var(--color-text-secondary);
+  text-decoration: none;
+
+  font-size: 0.6875rem;
+  font-weight: var(--font-weight-medium);
+  line-height: 1.1;
+
+  transition: var(--transition-interactive);
+}
+
+.footer-app-mobile-link:hover,
+.footer-app-mobile-link:focus-visible {
+  background-color: var(--color-surface-soft);
+  color: var(--color-primary-dark);
+  outline: none;
+}
+
+.footer-app-mobile-link.is-active,
+.footer-app-mobile-link.active {
+  color: var(--color-primary-dark);
+  background-color: var(--color-primary-light);
+}
+
+.footer-app-mobile-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* ================================
+   FOOTER COM STATUS / APOIO
+================================= */
+.footer-app-support {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-surface-soft);
+
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+/* ================================
+   RESPONSIVIDADE
+================================= */
+@media (max-width: 991.98px) {
+  .footer-app-inner,
+  .footer-app-bottom {
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+  }
+
+  .footer-app-columns {
+    gap: var(--spacing-lg);
+  }
+}
+
+@media (max-width: 767.98px) {
+  .footer-app-inner {
+    flex-direction: column;
+  }
+
+  .footer-app-columns {
+    width: 100%;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+
+  .footer-app-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-app-dashboard .footer-app-inner {
+    align-items: flex-start;
+  }
+
+  .footer-app-dashboard .footer-app-columns {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .footer-app-brand-title {
+    font-size: var(--font-size-sm);
+  }
+
+  .footer-app-brand-text,
+  .footer-app-link {
+    font-size: var(--font-size-xs);
+  }
+
+  .footer-app-mobile-nav-inner {
+    min-height: 60px;
+  }
+}

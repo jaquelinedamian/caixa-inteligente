@@ -1,0 +1,381 @@
+/* =========================================================
+   LAYOUTS - AUTH LAYOUT
+   Projeto TCC
+   ========================================================= */
+
+/* ================================
+   WRAPPER PRINCIPAL
+================================= */
+.auth-layout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(420px, 520px);
+  background-color: var(--color-background);
+}
+
+/* ================================
+   PAINEL VISUAL / INSTITUCIONAL
+================================= */
+.auth-layout-aside {
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: var(--spacing-2xl);
+  background:
+    linear-gradient(180deg, rgba(47, 90, 166, 0.08) 0%, rgba(255, 255, 255, 0) 100%),
+    linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-surface) 100%);
+  border-right: 1px solid var(--color-divider);
+}
+
+.auth-layout-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  text-decoration: none;
+  color: var(--color-text-primary);
+}
+
+.auth-layout-brand-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 48px;
+  height: 48px;
+
+  border-radius: var(--radius-xl);
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  flex-shrink: 0;
+}
+
+.auth-layout-brand-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.auth-layout-brand-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  color: var(--color-text-primary);
+}
+
+.auth-layout-brand-subtitle {
+  font-size: var(--font-size-xs);
+  line-height: 1.2;
+  color: var(--color-text-secondary);
+}
+
+.auth-layout-hero {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  max-width: 560px;
+}
+
+.auth-layout-title {
+  margin: 0;
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+}
+
+.auth-layout-text {
+  margin: 0;
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+}
+
+.auth-layout-features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.auth-layout-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(217, 226, 236, 0.8);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xs);
+  backdrop-filter: blur(6px);
+}
+
+.auth-layout-feature-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 36px;
+  height: 36px;
+
+  border-radius: var(--radius-lg);
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
+
+  font-size: 1rem;
+}
+
+.auth-layout-feature-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.auth-layout-feature-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  line-height: 1.3;
+}
+
+.auth-layout-feature-text {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-base);
+}
+
+.auth-layout-footer-note {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+/* ================================
+   PAINEL DO FORMULÁRIO
+================================= */
+.auth-layout-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: var(--spacing-xl);
+  background-color: var(--color-background);
+}
+
+.auth-layout-container {
+  width: 100%;
+  max-width: 420px;
+}
+
+.auth-layout-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-modal);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-xl);
+}
+
+.auth-layout-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-lg);
+}
+
+.auth-layout-card-title {
+  margin: 0;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+}
+
+.auth-layout-card-subtitle {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+}
+
+/* ================================
+   FORMULÁRIO
+================================= */
+.auth-layout-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.auth-layout-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.auth-layout-link {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: var(--transition-color);
+}
+
+.auth-layout-link:hover,
+.auth-layout-link:focus-visible {
+  color: var(--color-primary-dark);
+  outline: none;
+}
+
+.auth-layout-divider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: var(--spacing-sm) 0;
+  text-align: center;
+}
+
+.auth-layout-divider::before {
+  content: "";
+  position: absolute;
+  inset: 50% 0 auto 0;
+  border-top: 1px solid var(--color-divider);
+  transform: translateY(-50%);
+}
+
+.auth-layout-divider span {
+  position: relative;
+  z-index: 1;
+  padding: 0 var(--spacing-sm);
+  background-color: var(--color-surface);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.auth-layout-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-xs);
+}
+
+.auth-layout-meta {
+  margin-top: var(--spacing-md);
+  text-align: center;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-base);
+}
+
+/* ================================
+   ESTADOS / VARIAÇÕES
+================================= */
+.auth-layout-centered {
+  grid-template-columns: 1fr;
+}
+
+.auth-layout-centered .auth-layout-aside {
+  display: none;
+}
+
+.auth-layout-compact .auth-layout-card {
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.auth-layout-step .auth-layout-card {
+  max-width: 520px;
+}
+
+.auth-layout-step .auth-layout-container {
+  max-width: 560px;
+}
+
+/* ================================
+   BLOCO DE AJUDA
+================================= */
+.auth-layout-help {
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background-color: var(--color-surface-soft);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.auth-layout-help-title {
+  margin: 0 0 0.25rem;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.auth-layout-help-text {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-base);
+}
+
+/* ================================
+   RESPONSIVIDADE
+================================= */
+@media (max-width: 1199.98px) {
+  .auth-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(380px, 460px);
+  }
+
+  .auth-layout-aside {
+    padding: var(--spacing-xl);
+  }
+
+  .auth-layout-title {
+    font-size: var(--font-size-2xl);
+  }
+}
+
+@media (max-width: 991.98px) {
+  .auth-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-layout-aside {
+    display: none;
+  }
+
+  .auth-layout-main {
+    padding: var(--spacing-lg);
+  }
+
+  .auth-layout-container {
+    max-width: 520px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .auth-layout-main {
+    padding: var(--spacing-md);
+  }
+
+  .auth-layout-card {
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-md);
+  }
+
+  .auth-layout-card-title {
+    font-size: var(--font-size-xl);
+  }
+
+  .auth-layout-card-subtitle,
+  .auth-layout-link {
+    font-size: var(--font-size-xs);
+  }
+}

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>{{ page_title or 'Home' }} | Caixa Inteligente</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+{% include 'partials/header-auth.html' %}
+
+<main class="container py-4 mb-5">
+
+  <section class="mb-4">
+    <h1 class="h3 fw-bold mb-1">Home</h1>
+    <p class="text-secondary mb-0">
+      Olá, {{ usuario_nome }}. Veja como está o tratamento hoje.
+    </p>
+  </section>
+
+  {% set total_geral = namespace(valor=0) %}
+  {% set tomadas_geral = namespace(valor=0) %}
+  {% set atrasadas_geral = namespace(valor=0) %}
+  {% set fora_geral = namespace(valor=0) %}
+
+  {% for dispositivo in dispositivos %}
+    {% for registro in dispositivo.registros %}
+      {% set total_geral.valor = total_geral.valor + 1 %}
+
+      {% if registro.status == "tomada" %}
+        {% set tomadas_geral.valor = tomadas_geral.valor + 1 %}
+      {% elif registro.status == "atrasada" %}
+        {% set atrasadas_geral.valor = atrasadas_geral.valor + 1 %}
+      {% elif registro.status == "fora_do_horario" %}
+        {% set fora_geral.valor = fora_geral.valor + 1 %}
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+
+  {% set percentual_geral = ((tomadas_geral.valor / total_geral.valor) * 100)|round(0, "floor") if total_geral.valor > 0 else 0 %}
+
+  {% if dispositivos %}
+
+    <section class="mb-4">
+      <div class="dropdown">
+        <button class="btn btn-primary btn-lg w-100 rounded-4 d-flex justify-content-between align-items-center"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false">
+          <span>
+            <i class="bi bi-box-seam me-2"></i>
+            {{ dispositivos[0].nome }}
+          </span>
+          <i class="bi bi-chevron-down"></i>
+        </button>
+
+        <ul class="dropdown-menu w-100 shadow border-0 rounded-4">
+          {% for dispositivo in dispositivos %}
+            <li>
+              <a class="dropdown-item py-2" href="#caixa-{{ dispositivo.id }}">
+                {{ dispositivo.nome }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </section>
+
+    <section class="card border-0 shadow-sm rounded-4 mb-4">
+      <div class="card-body">
+
+        <div class="d-flex align-items-center gap-3 mb-3">
+          <span class="d-inline-flex align-items-center justify-content-center rounded-circle bg-info text-white"
+                style="width: 42px; height: 42px;">
+            <i class="bi bi-check-lg fs-5"></i>
+          </span>
+
+          <div>
+            <h2 class="h4 fw-bold mb-0">
+              {% if percentual_geral >= 85 %}
+                Excelente adesão
+              {% elif percentual_geral >= 60 %}
+                Adesão em atenção
+              {% elif total_geral.valor == 0 %}
+                Aguardando registros
+              {% else %}
+                Baixa adesão
+              {% endif %}
+            </h2>
+            <p class="text-secondary mb-0">
+              {{ tomadas_geral.valor }} de {{ total_geral.valor }} doses tomadas
+            </p>
+          </div>
+        </div>
+
+        <div class="mb-2 fw-semibold">
+          {{ percentual_geral }}% de adesão
+        </div>
+
+        <div class="progress rounded-pill mb-3" style="height: 14px;">
+          <div class="progress-bar bg-info"
+               role="progressbar"
+               style="width: {{ percentual_geral }}%;"
+               aria-valuenow="{{ percentual_geral }}"
+               aria-valuemin="0"
+               aria-valuemax="100">
+          </div>
+        </div>
+
+        <p class="small text-secondary mb-0">
+          {% if percentual_geral >= 85 %}
+            Muito bem. O tratamento está sendo seguido com ótima regularidade.
+          {% elif percentual_geral >= 60 %}
+            Alguns horários precisam de atenção para melhorar a adesão.
+          {% elif total_geral.valor == 0 %}
+            Ainda não há registros. Simule uma abertura para começar o acompanhamento.
+          {% else %}
+            Atenção: há muitas doses perdidas ou fora do horário.
+          {% endif %}
+        </p>
+
+      </div>
+    </section>
+
+    <section class="row g-3 mb-4">
+      <div class="col-6 col-lg-3">
+        <div class="card border-0 shadow-sm rounded-4 h-100">
+          <div class="card-body">
+            <div class="small text-secondary">Tomadas</div>
+            <div class="h3 fw-bold text-success mb-0">{{ tomadas_geral.valor }}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-lg-3">
+        <div class="card border-0 shadow-sm rounded-4 h-100">
+          <div class="card-body">
+            <div class="small text-secondary">Atrasadas</div>
+            <div class="h3 fw-bold text-warning mb-0">{{ atrasadas_geral.valor }}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-lg-3">
+        <div class="card border-0 shadow-sm rounded-4 h-100">
+          <div class="card-body">
+            <div class="small text-secondary">Fora do horário</div>
+            <div class="h3 fw-bold text-danger mb-0">{{ fora_geral.valor }}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-lg-3">
+        <div class="card border-0 shadow-sm rounded-4 h-100">
+          <div class="card-body">
+            <div class="small text-secondary">Dispositivos</div>
+            <div class="h3 fw-bold text-primary mb-0">{{ dispositivos|length }}</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card border-0 shadow-sm rounded-4 mb-4">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h2 class="h5 fw-bold mb-0">Gráfico do tratamento</h2>
+          <span class="badge text-bg-light border">Geral</span>
+        </div>
+
+        {% if total_geral.valor > 0 %}
+          <canvas id="graficoAdesao" height="160"></canvas>
+        {% else %}
+          <div class="alert alert-light border mb-0">
+            Ainda não há registros suficientes para gerar o gráfico.
+          </div>
+        {% endif %}
+      </div>
+    </section>
+
+    <section class="mb-4">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="h5 fw-bold mb-0">Caixas conectadas</h2>
+        <a href="{{ url_for('main.configuracao_dispositivo') }}" class="btn btn-sm btn-outline-primary rounded-pill">
+          <i class="bi bi-plus-circle me-1"></i>
+          Nova
+        </a>
+      </div>
+
+      <div class="row g-3">
+        {% for dispositivo in dispositivos %}
+          {% set total_registros = dispositivo.registros|length %}
+          {% set tomadas = dispositivo.registros|selectattr("status", "equalto", "tomada")|list|length %}
+          {% set percentual = ((tomadas / total_registros) * 100)|round(0, "floor") if total_registros > 0 else 0 %}
+
+          <div class="col-12 col-lg-6" id="caixa-{{ dispositivo.id }}">
+            <article class="card border-0 shadow-sm rounded-4 h-100">
+              <div class="card-body">
+
+                <div class="d-flex justify-content-between align-items-start gap-3 mb-3">
+                  <div>
+                    <h3 class="h5 fw-bold mb-1">{{ dispositivo.nome }}</h3>
+                    <p class="text-secondary small mb-0">
+                      Bluetooth: {{ dispositivo.bluetooth_id or 'Não informado' }}
+                    </p>
+                  </div>
+
+                  <span class="badge rounded-pill text-bg-success">
+                    {{ dispositivo.status or 'Conectada' }}
+                  </span>
+                </div>
+
+                <div class="border rounded-4 p-3 bg-light mb-3">
+                  <div class="small text-secondary mb-2">Adesão desta caixa</div>
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <strong>{{ percentual }}%</strong>
+                    <span class="small text-secondary">{{ tomadas }} tomadas</span>
+                  </div>
+                  <div class="progress rounded-pill" style="height: 10px;">
+                    <div class="progress-bar bg-info"
+                         style="width: {{ percentual }}%;"
+                         role="progressbar"
+                         aria-valuenow="{{ percentual }}"
+                         aria-valuemin="0"
+                         aria-valuemax="100">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <div class="small text-secondary mb-2">Horários configurados</div>
+
+                  {% if dispositivo.tratamentos %}
+                    <div class="list-group list-group-flush border rounded-4 overflow-hidden">
+                      {% for tratamento in dispositivo.tratamentos %}
+                        {% for horario in tratamento.horarios %}
+                          <div class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>
+                              <i class="bi bi-clock text-primary me-2"></i>
+                              {{ horario.horario.strftime('%H:%M') }}
+                            </span>
+                            <span class="badge text-bg-light border">
+                              {{ tratamento.nome or 'Medicamento' }}
+                            </span>
+                          </div>
+                        {% endfor %}
+                      {% endfor %}
+                    </div>
+                  {% else %}
+                    <div class="alert alert-light border mb-0">
+                      Nenhum horário configurado para esta caixa.
+                    </div>
+                  {% endif %}
+                </div>
+
+                <div class="d-grid gap-2">
+                  <a href="{{ url_for('main.horarios') }}" class="btn btn-primary rounded-4">
+                    <i class="bi bi-alarm me-2"></i>
+                    Configurar horários
+                  </a>
+
+                  <div class="row g-2">
+                    <div class="col-6">
+                      <a href="{{ url_for('main.simular_arduino') }}" class="btn btn-outline-primary w-100 rounded-4">
+                        <i class="bi bi-cpu me-1"></i>
+                        Simular
+                      </a>
+                    </div>
+
+                    <div class="col-6">
+                      <a href="{{ url_for('main.historico') }}" class="btn btn-outline-secondary w-100 rounded-4">
+                        <i class="bi bi-clock-history me-1"></i>
+                        Histórico
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </article>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+
+  {% else %}
+
+    <section class="card border-0 shadow-sm rounded-4">
+      <div class="card-body py-5 text-center">
+        <div class="mb-3">
+          <span class="d-inline-flex align-items-center justify-content-center rounded-circle bg-primary text-white"
+                style="width: 64px; height: 64px;">
+            <i class="bi bi-box-seam fs-3"></i>
+          </span>
+        </div>
+
+        <h2 class="h4 fw-bold mb-2">Nenhuma caixa conectada</h2>
+        <p class="text-secondary">
+          Cadastre sua caixa inteligente para configurar horários e acompanhar o tratamento.
+        </p>
+
+        <a href="{{ url_for('main.configuracao_dispositivo') }}" class="btn btn-primary btn-lg w-100 rounded-4">
+          <i class="bi bi-plus-circle me-2"></i>
+          Adicionar Dispositivo
+        </a>
+      </div>
+    </section>
+
+  {% endif %}
+
+</main>
+
+{% include 'partials/footer-auth.html' %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const totalEventos = {{ total_geral.valor }};
+  const tomadas = {{ tomadas_geral.valor }};
+  const atrasadas = {{ atrasadas_geral.valor }};
+  const foraHorario = {{ fora_geral.valor }};
+
+  const canvas = document.getElementById("graficoAdesao");
+
+  if (canvas && totalEventos > 0) {
+    new Chart(canvas, {
+      type: "doughnut",
+      data: {
+        labels: ["Tomadas", "Atrasadas", "Fora do horário"],
+        datasets: [{
+          data: [tomadas, atrasadas, foraHorario],
+          backgroundColor: ["#20c997", "#ffc107", "#dc3545"],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        cutout: "68%",
+        plugins: {
+          legend: {
+            position: "bottom"
+          }
+        }
+      }
+    });
+  }
+</script>
+
+</body>
+</html>

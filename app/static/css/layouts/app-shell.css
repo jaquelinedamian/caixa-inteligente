@@ -1,0 +1,186 @@
+/* =========================================================
+   LAYOUTS - APP SHELL
+   Projeto TCC
+   Estrutura principal do app
+   ========================================================= */
+
+/* ================================
+   CONTAINER PRINCIPAL
+================================= */
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--color-background);
+}
+
+/* ================================
+   SIDEBAR
+================================= */
+.app-shell-sidebar {
+  flex: 0 0 auto;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+/* ================================
+   ÁREA PRINCIPAL
+================================= */
+.app-shell-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* ================================
+   HEADER
+================================= */
+.app-shell-header {
+  flex: 0 0 auto;
+  position: relative;
+  z-index: 100;
+}
+
+/* ================================
+   CONTEÚDO
+================================= */
+.app-shell-content {
+  flex: 1 1 auto;
+  min-height: 0;
+
+  padding: var(--spacing-lg);
+  overflow-y: auto;
+
+  background-color: var(--color-background);
+}
+
+/* ================================
+   CONTAINER INTERNO
+================================= */
+.app-shell-container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* ================================
+   FOOTER
+================================= */
+.app-shell-footer {
+  flex: 0 0 auto;
+}
+
+/* ================================
+   LAYOUT COM SIDEBAR RECOLHIDA
+================================= */
+.app-shell.is-collapsed .app-shell-sidebar {
+  width: 88px;
+}
+
+.app-shell.is-collapsed .app-shell-content {
+  padding-left: var(--spacing-md);
+}
+
+/* ================================
+   LAYOUT FULL WIDTH
+================================= */
+.app-shell-full .app-shell-container {
+  max-width: 100%;
+}
+
+/* ================================
+   LAYOUT COM HEADER FIXO
+================================= */
+.app-shell-header.is-fixed {
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+}
+
+/* ================================
+   SCROLL CUSTOM
+================================= */
+.app-shell-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.app-shell-content::-webkit-scrollbar-track {
+  background: var(--color-surface-muted);
+}
+
+.app-shell-content::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+  border-radius: var(--radius-pill);
+}
+
+/* ================================
+   GRID DE CONTEÚDO
+================================= */
+.app-shell-grid {
+  display: grid;
+  gap: var(--spacing-lg);
+}
+
+.app-shell-grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.app-shell-grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.app-shell-grid-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* ================================
+   ÁREA COM SIDEBAR + CONTEÚDO
+================================= */
+.app-shell-layout {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  min-height: 100vh;
+}
+
+/* ================================
+   RESPONSIVIDADE
+================================= */
+@media (max-width: 991.98px) {
+  .app-shell {
+    flex-direction: column;
+  }
+
+  .app-shell-sidebar {
+    position: fixed;
+    z-index: 1015;
+    height: 100dvh;
+  }
+
+  .app-shell-main {
+    width: 100%;
+  }
+
+  .app-shell-content {
+    padding: var(--spacing-md);
+  }
+
+  .app-shell-grid-2,
+  .app-shell-grid-3,
+  .app-shell-grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .app-shell-content {
+    padding: var(--spacing-md);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .app-shell-content {
+    padding: var(--spacing-sm);
+  }
+}

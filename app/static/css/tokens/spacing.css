@@ -1,0 +1,87 @@
+/* =========================================================
+   TOKENS - SPACING
+   Projeto TCC
+   ========================================================= */
+
+:root {
+  /* ================================
+     BASE SCALE (4px system)
+  ================================= */
+  --spacing-xxs: 0.25rem;  /* 4px */
+  --spacing-xs: 0.5rem;    /* 8px */
+  --spacing-sm: 0.75rem;   /* 12px */
+  --spacing-md: 1rem;      /* 16px */
+  --spacing-lg: 1.5rem;    /* 24px */
+  --spacing-xl: 2rem;      /* 32px */
+  --spacing-2xl: 3rem;     /* 48px */
+  --spacing-3xl: 4rem;     /* 64px */
+  --spacing-4xl: 5.5rem;   /* 88px */
+   --spacing-5xl: 8rem;     /* 128px */
+  /* ================================
+     LAYOUT SPACING
+  ================================= */
+  --spacing-section: var(--spacing-xl);
+  --spacing-section-lg: var(--spacing-2xl);
+
+  --spacing-container-padding: var(--spacing-md);
+  --spacing-container-padding-lg: var(--spacing-lg);
+
+  /* ================================
+     COMPONENT SPACING
+  ================================= */
+  --spacing-card-padding: var(--spacing-md);
+  --spacing-card-padding-lg: var(--spacing-lg);
+
+  --spacing-input-padding-y: 0.5rem;
+  --spacing-input-padding-x: 0.75rem;
+
+  --spacing-button-padding-y: 0.5rem;
+  --spacing-button-padding-x: 1rem;
+
+  /* ================================
+     GAP (GRID / FLEX)
+  ================================= */
+  --spacing-gap-xs: var(--spacing-xs);
+  --spacing-gap-sm: var(--spacing-sm);
+  --spacing-gap-md: var(--spacing-md);
+  --spacing-gap-lg: var(--spacing-lg);
+}
+
+/* =========================================================
+   UTILIDADES OPCIONAIS (se quiser usar sem Bootstrap)
+   ========================================================= */
+
+/* Margin Bottom */
+.mb-xs { margin-bottom: var(--spacing-xs); }
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+.mb-xl { margin-bottom: var(--spacing-xl); }
+
+/* Margin Top */
+.mt-xs { margin-top: var(--spacing-xs); }
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mt-xl { margin-top: var(--spacing-xl); }
+
+/* Padding */
+.p-xs { padding: var(--spacing-xs); }
+.p-sm { padding: var(--spacing-sm); }
+.p-md { padding: var(--spacing-md); }
+.p-lg { padding: var(--spacing-lg); }
+.p-xl { padding: var(--spacing-xl); }
+
+/* Gap */
+.gap-xs { gap: var(--spacing-gap-xs); }
+.gap-sm { gap: var(--spacing-gap-sm); }
+.gap-md { gap: var(--spacing-gap-md); }
+.gap-lg { gap: var(--spacing-gap-lg); }
+
+/* ================================
+   LAYOUT - HEADER
+================================= */
+:root {
+  --header-height-desktop: var(--spacing-4xl);
+  --header-height-mobile: var(--spacing-5xl);
+}

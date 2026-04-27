@@ -1,0 +1,403 @@
+/* =========================================================
+   COMPONENTS - FILTERS
+   Projeto TCC
+   ========================================================= */
+
+/* ================================
+   CONTAINER DE FILTROS
+================================= */
+.filters-app {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+
+  padding: var(--spacing-md);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+/* ================================
+   HEADER DOS FILTROS
+================================= */
+.filters-app-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.filters-app-title {
+  margin: 0;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.filters-app-subtitle {
+  margin: 0.25rem 0 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+/* ================================
+   CORPO DOS FILTROS
+================================= */
+.filters-app-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.filters-app-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.filters-app-col {
+  flex: 1 1 220px;
+  min-width: 180px;
+}
+
+/* ================================
+   GRUPOS
+================================= */
+.filters-app-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.filters-app-label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--color-text-muted);
+}
+
+/* ================================
+   AÇÕES DOS FILTROS
+================================= */
+.filters-app-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid var(--color-divider);
+}
+
+.filters-app-actions-left,
+.filters-app-actions-right {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+/* ================================
+   CHIPS / TAGS DE FILTRO
+================================= */
+.filter-chip-app {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xxs);
+
+  min-height: 36px;
+  padding: 0.5rem 0.875rem;
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+
+  background-color: var(--color-surface);
+  color: var(--color-text-secondary);
+
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  white-space: nowrap;
+
+  transition: var(--transition-interactive);
+  cursor: pointer;
+}
+
+.filter-chip-app:hover,
+.filter-chip-app:focus-visible {
+  background-color: var(--color-surface-soft);
+  color: var(--color-primary-dark);
+  border-color: var(--color-border-strong);
+  outline: none;
+}
+
+.filter-chip-app.is-active,
+.filter-chip-app.active {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  border-color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* ================================
+   LINHA DE CHIPS
+================================= */
+.filters-app-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+/* ================================
+   FILTROS ATIVOS
+================================= */
+.filters-app-active {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+
+  padding: var(--spacing-sm);
+  background-color: var(--color-surface-soft);
+  border: 1px dashed var(--color-border-strong);
+  border-radius: var(--radius-lg);
+}
+
+.filters-app-active-title {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--color-text-muted);
+}
+
+.filters-app-active-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.filters-app-active-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+
+  min-height: 32px;
+  padding: 0.375rem 0.625rem;
+
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.filters-app-active-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 18px;
+  height: 18px;
+
+  border-radius: var(--radius-pill);
+  background-color: transparent;
+  color: var(--color-text-muted);
+
+  transition: var(--transition-interactive);
+  cursor: pointer;
+}
+
+.filters-app-active-remove:hover,
+.filters-app-active-remove:focus-visible {
+  background-color: var(--color-surface-soft);
+  color: var(--color-danger);
+  outline: none;
+}
+
+/* ================================
+   BARRA SUPERIOR DE FILTRO
+================================= */
+.filters-toolbar-app {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.filters-toolbar-app-left,
+.filters-toolbar-app-right {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+/* ================================
+   RESUMO DE RESULTADOS
+================================= */
+.filters-results-app {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.filters-results-app strong {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* ================================
+   PAINEL LATERAL DE FILTROS
+================================= */
+.filters-sidebar-app {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+
+  padding: var(--spacing-md);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.filters-sidebar-app .filters-app-group + .filters-app-group {
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-divider);
+}
+
+/* ================================
+   FILTRO COLAPSÁVEL
+================================= */
+.filters-app-collapse {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.filters-app-collapse-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+
+  width: 100%;
+  min-height: 40px;
+  padding: 0.5rem 0;
+
+  color: var(--color-text-primary);
+  background: transparent;
+  border: 0;
+
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.filters-app-collapse-toggle:hover,
+.filters-app-collapse-toggle:focus-visible {
+  color: var(--color-primary-dark);
+  outline: none;
+}
+
+.filters-app-collapse-content {
+  display: none;
+}
+
+.filters-app-collapse.is-open .filters-app-collapse-content {
+  display: block;
+}
+
+/* ================================
+   FILTROS INLINE
+================================= */
+.filters-inline-app {
+  display: flex;
+  align-items: end;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.filters-inline-app .filters-app-group {
+  min-width: 180px;
+  flex: 1 1 180px;
+}
+
+/* ================================
+   FILTRO DE DATA RÁPIDA
+================================= */
+.filters-date-shortcuts-app {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+/* ================================
+   EMPTY / AJUDA
+================================= */
+.filters-app-helper {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-base);
+}
+
+/* ================================
+   RESPONSIVIDADE
+================================= */
+@media (max-width: 991.98px) {
+  .filters-app,
+  .filters-sidebar-app {
+    padding: var(--spacing-md);
+  }
+
+  .filters-app-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filters-app-actions-left,
+  .filters-app-actions-right {
+    width: 100%;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .filters-toolbar-app,
+  .filters-toolbar-app-left,
+  .filters-toolbar-app-right,
+  .filters-inline-app,
+  .filters-app-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filters-app-col,
+  .filters-inline-app .filters-app-group {
+    min-width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .filters-app-chips,
+  .filters-date-shortcuts-app,
+  .filters-app-active-list {
+    gap: var(--spacing-xs);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .filters-app-title {
+    font-size: var(--font-size-sm);
+  }
+
+  .filter-chip-app {
+    min-height: 34px;
+    padding: 0.5rem 0.75rem;
+  }
+}

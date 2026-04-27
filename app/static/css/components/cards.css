@@ -1,0 +1,364 @@
+/* =========================================================
+   COMPONENTS - CARDS
+   Projeto TCC
+   ========================================================= */
+
+/* ================================
+   CARD BASE
+================================= */
+.card-app {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+
+  transition: var(--transition-shadow), var(--transition-transform), var(--transition-color);
+  overflow: hidden;
+}
+
+/* Card interativo */
+.card-app.is-clickable,
+.card-app.card-app-hover {
+  cursor: pointer;
+}
+
+.card-app.is-clickable:hover,
+.card-app.card-app-hover:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+  border-color: var(--color-border-strong);
+}
+
+/* ================================
+   HEADER / BODY / FOOTER
+================================= */
+.card-app-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+
+  padding: var(--spacing-card-padding);
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.card-app-body {
+  flex: 1 1 auto;
+  padding: var(--spacing-card-padding);
+}
+
+.card-app-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+
+  padding: var(--spacing-card-padding);
+  border-top: 1px solid var(--color-divider);
+  background-color: var(--color-surface);
+}
+
+/* ================================
+   TÍTULOS E TEXTOS
+================================= */
+.card-app-title {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+}
+
+.card-app-subtitle {
+  margin-top: 0.25rem;
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-base);
+  color: var(--color-text-secondary);
+}
+
+.card-app-text {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+}
+
+.card-app-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+/* ================================
+   VARIAÇÕES DE PADDING
+================================= */
+.card-app-sm .card-app-header,
+.card-app-sm .card-app-body,
+.card-app-sm .card-app-footer {
+  padding: var(--spacing-md);
+}
+
+.card-app-lg .card-app-header,
+.card-app-lg .card-app-body,
+.card-app-lg .card-app-footer {
+  padding: var(--spacing-lg);
+}
+
+/* ================================
+   CARD SEM DIVISÓRIAS
+================================= */
+.card-app.no-divider .card-app-header,
+.card-app.no-divider .card-app-footer {
+  border: 0;
+}
+
+/* ================================
+   CARD FLAT / OUTLINE
+================================= */
+.card-app-flat {
+  box-shadow: none;
+}
+
+.card-app-outline {
+  box-shadow: none;
+  border: 1px solid var(--color-border-strong);
+}
+
+/* ================================
+   CARD DESTACADO
+================================= */
+.card-app-highlight {
+  border-color: var(--color-primary-light);
+  box-shadow: var(--shadow-md);
+}
+
+.card-app-selected {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 0.2rem rgba(47, 90, 166, 0.12);
+}
+
+/* ================================
+   CARD COM FUNDO SUAVE
+================================= */
+.card-app-soft {
+  background-color: var(--color-surface-soft);
+  border-color: transparent;
+}
+
+/* ================================
+   CARD DE STATUS
+================================= */
+.card-app-status {
+  position: relative;
+}
+
+.card-app-status::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background-color: var(--color-primary);
+}
+
+.card-app-status-success::before {
+  background-color: var(--color-success);
+}
+
+.card-app-status-warning::before {
+  background-color: var(--color-warning);
+}
+
+.card-app-status-danger::before {
+  background-color: var(--color-danger);
+}
+
+.card-app-status-info::before {
+  background-color: var(--color-info);
+}
+
+/* ================================
+   CARD COM ÍCONE / AVATAR
+================================= */
+.card-app-media {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+}
+
+.card-app-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-lg);
+
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  font-size: 1.25rem;
+}
+
+.card-app-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-avatar);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.card-app-media-content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* ================================
+   CARD DE RESUMO / MÉTRICA
+================================= */
+.card-app-metric {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.card-app-label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.card-app-value {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.1;
+  color: var(--color-text-primary);
+}
+
+.card-app-trend {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+/* ================================
+   GRID INTERNO DO CARD
+================================= */
+.card-app-grid {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.card-app-grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.card-app-grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* ================================
+   LISTA DENTRO DO CARD
+================================= */
+.card-app-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.card-app-list-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.card-app-list-item:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+/* ================================
+   AÇÕES
+================================= */
+.card-app-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.card-app-actions-end {
+  justify-content: flex-end;
+}
+
+/* ================================
+   CARD HORIZONTAL
+================================= */
+.card-app-horizontal {
+  display: flex;
+  flex-direction: row;
+}
+
+.card-app-horizontal .card-app-media,
+.card-app-horizontal .card-app-body {
+  width: 100%;
+}
+
+/* ================================
+   CARD DE ALERTA / EMERGÊNCIA
+================================= */
+.card-app-alert {
+  border-color: var(--color-alert);
+  background-color: var(--color-alert-light);
+}
+
+.card-app-emergency {
+  border-color: var(--color-emergency);
+  background-color: var(--color-emergency-light);
+}
+
+/* ================================
+   RESPONSIVIDADE
+================================= */
+@media (max-width: 767.98px) {
+  .card-app-header,
+  .card-app-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .card-app-grid-2,
+  .card-app-grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .card-app-horizontal {
+    flex-direction: column;
+  }
+
+  .card-app-value {
+    font-size: var(--font-size-xl);
+  }
+}
+
+/* ================================
+   INTEGRAÇÃO COM BOOTSTRAP
+================================= */
+.card.card-app {
+  border-radius: var(--radius-card);
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-card);
+}

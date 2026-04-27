@@ -1,0 +1,239 @@
+/* =========================================================
+   COMPONENTS - EMPTY STATES
+   Projeto TCC
+   ========================================================= */
+
+/* ================================
+   CONTAINER BASE
+================================= */
+.empty-state-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+
+  width: 100%;
+  min-height: 280px;
+  padding: var(--spacing-xl);
+
+  text-align: center;
+
+  background-color: var(--color-surface);
+  border: 1px dashed var(--color-border-strong);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+/* ================================
+   VARIAÇÕES
+================================= */
+.empty-state-app-soft {
+  background-color: var(--color-surface-soft);
+  border-style: solid;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.empty-state-app-flat {
+  background-color: transparent;
+  border: 0;
+  box-shadow: none;
+  min-height: 220px;
+}
+
+/* ================================
+   ÍCONE / ILUSTRAÇÃO
+================================= */
+.empty-state-app-media {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 72px;
+  height: 72px;
+
+  border-radius: var(--radius-xl);
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
+
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.empty-state-app-media.is-warning {
+  background-color: var(--color-warning-light);
+  color: var(--color-warning);
+}
+
+.empty-state-app-media.is-danger {
+  background-color: var(--color-danger-light);
+  color: var(--color-danger);
+}
+
+.empty-state-app-media.is-success {
+  background-color: var(--color-success-light);
+  color: var(--color-success);
+}
+
+.empty-state-app-media.is-neutral {
+  background-color: var(--color-surface-soft);
+  color: var(--color-text-secondary);
+}
+
+/* ================================
+   CONTEÚDO
+================================= */
+.empty-state-app-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  max-width: 520px;
+}
+
+.empty-state-app-title {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+}
+
+.empty-state-app-text {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+}
+
+/* ================================
+   AÇÕES
+================================= */
+.empty-state-app-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+  margin-top: var(--spacing-xs);
+}
+
+/* ================================
+   META / APOIO
+================================= */
+.empty-state-app-helper {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-base);
+}
+
+/* ================================
+   EMPTY STATE COM LISTA DE SUGESTÕES
+================================= */
+.empty-state-app-suggestions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+
+  width: 100%;
+  max-width: 420px;
+  margin-top: var(--spacing-sm);
+}
+
+.empty-state-app-suggestion {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+
+  padding: var(--spacing-sm) var(--spacing-md);
+  text-align: left;
+
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.empty-state-app-suggestion-icon {
+  flex-shrink: 0;
+  color: var(--color-primary);
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.empty-state-app-suggestion-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-base);
+}
+
+/* ================================
+   EMPTY STATE INLINE / COMPACTO
+================================= */
+.empty-state-app-inline {
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+
+  min-height: auto;
+  padding: var(--spacing-md);
+}
+
+.empty-state-app-inline .empty-state-app-content {
+  align-items: flex-start;
+}
+
+.empty-state-app-inline .empty-state-app-media {
+  width: 56px;
+  height: 56px;
+  font-size: 1.25rem;
+}
+
+/* ================================
+   EMPTY STATE PARA LISTAS/TABELAS
+================================= */
+.empty-state-app-table {
+  min-height: 200px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-top: 0;
+  box-shadow: none;
+}
+
+/* ================================
+   RESPONSIVIDADE
+================================= */
+@media (max-width: 767.98px) {
+  .empty-state-app {
+    min-height: 240px;
+    padding: var(--spacing-lg);
+  }
+
+  .empty-state-app-title {
+    font-size: var(--font-size-md);
+  }
+
+  .empty-state-app-text {
+    font-size: var(--font-size-xs);
+  }
+
+  .empty-state-app-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .empty-state-app-actions > * {
+    width: 100%;
+  }
+
+  .empty-state-app-inline {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .empty-state-app-inline .empty-state-app-content {
+    align-items: center;
+  }
+}

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ page_title }} | Caixa Inteligente</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+{% include 'partials/header-auth.html' %}
+
+<main class="container py-5">
+
+  <section class="mb-4">
+    <h1 class="h3 fw-bold mb-2">Histórico</h1>
+    <p class="text-secondary mb-0">
+      Acompanhe os registros simulados de abertura da caixa.
+    </p>
+  </section>
+
+  {% set total = registros|length %}
+  {% set tomadas = registros|selectattr("status", "equalto", "tomada")|list|length %}
+  {% set atrasadas = registros|selectattr("status", "equalto", "atrasada")|list|length %}
+  {% set fora = registros|selectattr("status", "equalto", "fora_do_horario")|list|length %}
+  {% set percentual = ((tomadas / total) * 100)|round(0, "floor") if total > 0 else 0 %}
+
+  <section class="card border-0 shadow-sm rounded-4 mb-4">
+    <div class="card-body">
+      <div class="row g-3 align-items-center">
+
+        <div class="col-12 col-lg-4">
+          <div class="d-flex align-items-center gap-3">
+            <span class="d-inline-flex align-items-center justify-content-center rounded-circle bg-info text-white fs-5" style="width: 42px; height: 42px;">
+              <i class="bi bi-check-lg"></i>
+            </span>
+            <div>
+              <div class="fw-bold fs-5">
+                {% if percentual >= 80 %}
+                  Excelente adesão
+                {% elif percentual >= 50 %}
+                  Adesão em atenção
+                {% else %}
+                  Baixa adesão
+                {% endif %}
+              </div>
+              <div class="text-secondary small">{{ percentual }}% de adesão</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-8">
+          <div class="row g-2">
+            <div class="col-6 col-lg-3">
+              <div class="border rounded-4 p-3 bg-white">
+                <div class="small text-secondary">Eventos</div>
+                <div class="h4 mb-0">{{ total }}</div>
+              </div>
+            </div>
+
+            <div class="col-6 col-lg-3">
+              <div class="border rounded-4 p-3 bg-white">
+                <div class="small text-secondary">Tomadas</div>
+                <div class="h4 mb-0 text-success">{{ tomadas }}</div>
+              </div>
+            </div>
+
+            <div class="col-6 col-lg-3">
+              <div class="border rounded-4 p-3 bg-white">
+                <div class="small text-secondary">Atrasadas</div>
+                <div class="h4 mb-0 text-warning">{{ atrasadas }}</div>
+              </div>
+            </div>
+
+            <div class="col-6 col-lg-3">
+              <div class="border rounded-4 p-3 bg-white">
+                <div class="small text-secondary">Fora horário</div>
+                <div class="h4 mb-0 text-secondary">{{ fora }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-4">
+    <a href="{{ url_for('main.simular_arduino') }}" class="btn btn-primary">
+      <i class="bi bi-cpu me-2"></i>
+      Simular nova abertura
+    </a>
+
+    <a href="{{ url_for('main.configuracao_dispositivo') }}" class="btn btn-outline-primary ms-2">
+      Ajustar lembretes
+    </a>
+  </section>
+
+  <section class="card border-0 shadow-sm rounded-4">
+    <div class="card-body">
+
+      <h2 class="h5 fw-bold mb-4">Registros</h2>
+
+      {% if registros %}
+        <div class="list-group list-group-flush">
+          {% for r in registros %}
+            <div class="list-group-item px-0 py-3">
+              <div class="row g-3 align-items-center">
+
+                <div class="col-12 col-lg-4">
+                  <div class="fw-bold">{{ r.dispositivo.nome }}</div>
+                  <div class="text-secondary small">
+                    Previsto: {{ r.data_prevista }} às {{ r.horario_previsto.strftime('%H:%M') }}
+                  </div>
+                </div>
+
+                <div class="col-12 col-lg-4">
+                  <div class="text-secondary small">Abertura registrada</div>
+                  <div>
+                    {% if r.aberto_em %}
+                      {{ r.aberto_em.strftime('%d/%m/%Y %H:%M:%S') }}
+                    {% else %}
+                      Não registrada
+                    {% endif %}
+                  </div>
+                </div>
+
+                <div class="col-12 col-lg-4 text-lg-end">
+                  {% if r.status == 'tomada' %}
+                    <span class="badge text-bg-success rounded-pill px-3 py-2">Tomada no horário</span>
+                  {% elif r.status == 'atrasada' %}
+                    <span class="badge text-bg-warning rounded-pill px-3 py-2">Tomada com atraso</span>
+                  {% elif r.status == 'fora_do_horario' %}
+                    <span class="badge text-bg-secondary rounded-pill px-3 py-2">Fora do horário</span>
+                  {% else %}
+                    <span class="badge text-bg-light rounded-pill px-3 py-2">{{ r.status }}</span>
+                  {% endif %}
+                </div>
+
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="alert alert-light border mb-0">
+          Nenhum evento registrado ainda. Use a página de simulação para criar o primeiro registro.
+        </div>
+      {% endif %}
+
+    </div>
+  </section>
+
+</main>
+
+{% include 'partials/footer-auth.html' %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

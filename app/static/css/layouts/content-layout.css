@@ -1,0 +1,331 @@
+/* =========================================================
+   LAYOUTS - CONTENT LAYOUT
+   Projeto TCC
+   ========================================================= */
+
+/* ================================
+   WRAPPER
+================================= */
+.content-layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  width: 100%;
+  min-width: 0;
+}
+
+/* ================================
+   HEADER DO CONTEÚDO
+================================= */
+.content-layout-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.content-layout-header-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.content-layout-title {
+  margin: 0;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+}
+
+.content-layout-subtitle {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+  max-width: 760px;
+}
+
+.content-layout-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+/* ================================
+   TOOLBAR
+================================= */
+.content-layout-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.content-layout-toolbar-left,
+.content-layout-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+/* ================================
+   GRID PRINCIPAL
+================================= */
+.content-layout-grid {
+  display: grid;
+  gap: var(--spacing-lg);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+/* ================================
+   COLUNAS
+================================= */
+.content-col-12 { grid-column: span 12; }
+.content-col-9  { grid-column: span 9; }
+.content-col-8  { grid-column: span 8; }
+.content-col-7  { grid-column: span 7; }
+.content-col-6  { grid-column: span 6; }
+.content-col-5  { grid-column: span 5; }
+.content-col-4  { grid-column: span 4; }
+.content-col-3  { grid-column: span 3; }
+
+/* ================================
+   ÁREAS
+================================= */
+.content-layout-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  min-width: 0;
+}
+
+.content-layout-aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  min-width: 0;
+}
+
+/* ================================
+   SEÇÕES
+================================= */
+.content-layout-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  min-width: 0;
+}
+
+.content-layout-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.content-layout-section-title {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.content-layout-section-subtitle {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.content-layout-section-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+/* ================================
+   BLOCOS DE TEXTO
+================================= */
+.content-layout-text-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.content-layout-text-block p {
+  margin: 0;
+}
+
+.content-layout-text-block ul,
+.content-layout-text-block ol {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.content-layout-text-block li + li {
+  margin-top: 0.375rem;
+}
+
+/* ================================
+   HERO / INTRO
+================================= */
+.content-layout-hero {
+  padding: var(--spacing-lg);
+  background: linear-gradient(
+    180deg,
+    var(--color-primary-light) 0%,
+    var(--color-surface) 100%
+  );
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.content-layout-hero-title {
+  margin: 0 0 var(--spacing-xs);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+}
+
+.content-layout-hero-text {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+  max-width: 760px;
+}
+
+/* ================================
+   SPLIT LAYOUT
+================================= */
+.content-layout-split {
+  display: grid;
+  gap: var(--spacing-lg);
+  grid-template-columns: minmax(0, 2fr) minmax(320px, 1fr);
+}
+
+.content-layout-split.is-reverse {
+  grid-template-columns: minmax(320px, 1fr) minmax(0, 2fr);
+}
+
+/* ================================
+   STACK
+================================= */
+.content-layout-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+/* ================================
+   RESUMO
+================================= */
+.content-layout-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.content-layout-summary-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+
+  min-height: 36px;
+  padding: 0.5rem 0.875rem;
+
+  background-color: var(--color-surface-soft);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+/* ================================
+   STICKY ASIDE
+================================= */
+.content-layout-aside.is-sticky {
+  position: sticky;
+  top: calc(var(--spacing-lg) + 72px);
+  align-self: start;
+}
+
+/* ================================
+   RESPONSIVIDADE
+================================= */
+@media (max-width: 1199.98px) {
+  .content-layout-split,
+  .content-layout-split.is-reverse {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .content-layout-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .content-col-12,
+  .content-col-9,
+  .content-col-8,
+  .content-col-7,
+  .content-col-6,
+  .content-col-5,
+  .content-col-4,
+  .content-col-3 {
+    grid-column: span 1;
+  }
+
+  .content-layout-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .content-layout-actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .content-layout {
+    gap: var(--spacing-md);
+  }
+
+  .content-layout-title,
+  .content-layout-hero-title {
+    font-size: var(--font-size-xl);
+  }
+
+  .content-layout-subtitle,
+  .content-layout-hero-text {
+    font-size: var(--font-size-xs);
+  }
+
+  .content-layout-toolbar,
+  .content-layout-toolbar-left,
+  .content-layout-toolbar-right,
+  .content-layout-section-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .content-layout-hero {
+    padding: var(--spacing-md);
+  }
+
+  .content-layout-aside.is-sticky {
+    position: static;
+  }
+}

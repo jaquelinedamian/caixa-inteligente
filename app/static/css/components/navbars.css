@@ -1,0 +1,188 @@
+/* =========================================================
+   MOBILE DRAWER
+   styles/components/navbars.css
+   ========================================================= */
+
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 31, 42, 0.42);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 998;
+}
+
+.mobile-menu-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 100%;
+  height: 100dvh;
+  background: var(--color-surface);
+  transform: translateX(-100%);
+  transition: transform 0.32s ease;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-lg);
+  overflow-y: auto;
+}
+
+.mobile-drawer.is-open {
+  transform: translateX(0);
+}
+
+.mobile-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-lg) var(--spacing-lg);
+  border-bottom: 1px solid var(--color-divider);
+  background-color: var(--color-surface);
+}
+
+.mobile-drawer-title,
+.mobile-drawer-header .navbar-app-brand-title {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+}
+
+.mobile-close-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-pill);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  font-size: 1.125rem;
+  transition: var(--transition-interactive);
+}
+
+.mobile-close-btn:hover,
+.mobile-close-btn:focus-visible {
+  background-color: var(--color-surface-soft);
+  color: var(--color-primary);
+  outline: none;
+}
+
+.mobile-drawer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-lg);
+  background-color: var(--color-surface);
+}
+
+.mobile-link {
+  display: block;
+  width: 100%;
+  padding: 0.95rem 0;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-base);
+  border-radius: var(--radius-md);
+  transition: var(--transition-interactive);
+}
+
+.mobile-link:hover,
+.mobile-link:focus-visible {
+  color: var(--color-primary);
+  background-color: var(--color-surface-soft);
+  padding-left: var(--spacing-sm);
+  padding-right: var(--spacing-sm);
+  outline: none;
+}
+
+.mobile-link.is-active {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+  background-color: var(--color-primary-light);
+  padding-left: var(--spacing-sm);
+  padding-right: var(--spacing-sm);
+}
+
+.mobile-link.text-danger {
+  color: var(--color-danger);
+}
+
+.mobile-link.text-danger:hover,
+.mobile-link.text-danger:focus-visible {
+  color: var(--color-danger);
+  background-color: var(--color-danger-light);
+}
+
+.mobile-divider {
+  height: 1px;
+  background: var(--color-divider);
+  margin: var(--spacing-sm) 0;
+}
+
+/* =========================================================
+   NAVBAR LINKS - DESKTOP
+   ========================================================= */
+
+.navbar-app-link {
+  color: var(--color-text-primary);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: var(--transition-color);
+}
+
+.navbar-app-link:hover,
+.navbar-app-link:focus-visible {
+  color: var(--color-primary);
+  outline: none;
+}
+
+.navbar-app-link.is-active {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* =========================================================
+   HEADER - MAIS RESPIRO
+   ========================================================= */
+
+.header-app {
+  padding-top: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
+}
+
+.navbar-app {
+  min-height: 72px;
+}
+
+@media (max-width: 991.98px) {
+  .header-app {
+    padding-top: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
+  }
+
+  .navbar-app {
+    min-height: 64px;
+  }
+
+  .mobile-drawer-header,
+  .mobile-drawer-nav {
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+  }
+}

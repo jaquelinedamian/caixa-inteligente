@@ -1,0 +1,319 @@
+/* =========================================================
+   COMPONENTS - FORMS
+   Projeto TCC
+   ========================================================= */
+
+/* ================================
+   GRUPOS E ESTRUTURA
+================================= */
+.form-group-app {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
+}
+
+.form-section-app {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.form-row-app {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+/* ================================
+   LABELS
+================================= */
+.form-label-app {
+  display: inline-block;
+  margin-bottom: 0;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-base);
+  color: var(--color-text-primary);
+}
+
+.form-label-required::after {
+  content: " *";
+  color: var(--color-danger);
+}
+
+/* ================================
+   TEXTOS DE APOIO
+================================= */
+.form-helper-app {
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-base);
+  color: var(--color-text-muted);
+}
+
+.form-error-app {
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-base);
+  color: var(--color-danger);
+}
+
+.form-success-app {
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-base);
+  color: var(--color-success);
+}
+
+/* ================================
+   CAMPOS BASE
+================================= */
+.form-control-app,
+.form-select-app,
+.form-textarea-app {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  padding: var(--spacing-input-padding-y) var(--spacing-input-padding-x);
+
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-input);
+
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-base);
+
+  box-shadow: none;
+  transition: var(--transition-interactive);
+}
+
+.form-textarea-app {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-control-app::placeholder,
+.form-textarea-app::placeholder {
+  color: var(--color-text-muted);
+  opacity: 1;
+}
+
+/* ================================
+   HOVER E FOCUS
+================================= */
+.form-control-app:hover,
+.form-select-app:hover,
+.form-textarea-app:hover {
+  border-color: var(--color-border-strong);
+}
+
+.form-control-app:focus,
+.form-select-app:focus,
+.form-textarea-app:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-focus);
+  background-color: var(--color-surface);
+}
+
+/* ================================
+   ESTADOS
+================================= */
+.form-control-app:disabled,
+.form-select-app:disabled,
+.form-textarea-app:disabled,
+.form-control-app[readonly],
+.form-textarea-app[readonly] {
+  background-color: var(--color-disabled-bg);
+  color: var(--color-disabled-text);
+  border-color: var(--color-border);
+  cursor: not-allowed;
+}
+
+.is-invalid-app {
+  border-color: var(--color-danger) !important;
+  box-shadow: 0 0 0 0.2rem rgba(197, 48, 48, 0.15) !important;
+}
+
+.is-valid-app {
+  border-color: var(--color-success) !important;
+  box-shadow: 0 0 0 0.2rem rgba(46, 125, 50, 0.15) !important;
+}
+
+/* ================================
+   TAMANHOS
+================================= */
+.form-control-app-sm,
+.form-select-app-sm {
+  min-height: 36px;
+  padding: 0.375rem 0.75rem;
+  font-size: var(--font-size-xs);
+  border-radius: var(--radius-sm);
+}
+
+.form-control-app-lg,
+.form-select-app-lg,
+.form-textarea-app-lg {
+  min-height: 52px;
+  padding: 0.75rem 1rem;
+  font-size: var(--font-size-base);
+}
+
+/* ================================
+   INPUT GROUP
+================================= */
+.input-group-app {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+
+.input-group-app .form-control-app {
+  border-radius: 0;
+  flex: 1 1 auto;
+}
+
+.input-group-app .form-control-app:first-child {
+  border-top-left-radius: var(--radius-input);
+  border-bottom-left-radius: var(--radius-input);
+}
+
+.input-group-app .form-control-app:last-child {
+  border-top-right-radius: var(--radius-input);
+  border-bottom-right-radius: var(--radius-input);
+}
+
+.input-group-text-app {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--spacing-md);
+  background-color: var(--color-surface-soft);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+  font-size: var(--font-size-sm);
+  white-space: nowrap;
+}
+
+.input-group-app .input-group-text-app:first-child {
+  border-top-left-radius: var(--radius-input);
+  border-bottom-left-radius: var(--radius-input);
+  border-right: 0;
+}
+
+.input-group-app .input-group-text-app:last-child {
+  border-top-right-radius: var(--radius-input);
+  border-bottom-right-radius: var(--radius-input);
+  border-left: 0;
+}
+
+/* ================================
+   CHECKBOX E RADIO
+================================= */
+.form-check-app {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.form-check-input-app {
+  width: 1.125rem;
+  height: 1.125rem;
+  margin-top: 0.15rem;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.form-check-label-app {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-base);
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+
+/* ================================
+   SWITCH
+================================= */
+.form-switch-app {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.form-switch-app .form-check-input-app {
+  width: 2.5rem;
+  height: 1.4rem;
+}
+
+/* ================================
+   FILTROS E BUSCA
+================================= */
+.form-search-app {
+  position: relative;
+}
+
+.form-search-app .form-control-app {
+  padding-left: 2.75rem;
+}
+
+.form-search-icon-app {
+  position: absolute;
+  top: 50%;
+  left: var(--spacing-md);
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+/* ================================
+   AÇÕES DO FORMULÁRIO
+================================= */
+.form-actions-app {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-lg);
+}
+
+.form-actions-app--end {
+  justify-content: flex-end;
+}
+
+.form-actions-app--between {
+  justify-content: space-between;
+}
+
+/* ================================
+   CARD DE FORMULÁRIO
+================================= */
+.form-card-app {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: var(--spacing-card-padding);
+}
+
+.form-card-title-app {
+  margin-bottom: var(--spacing-xs);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.form-card-description-app {
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+/* ================================
+   INTEGRAÇÃO COM BOOTSTRAP
+================================= */
+.form-control.form-control-app,
+.form-select.form-select-app {
+  font-family: var(--font-family-base);
+}

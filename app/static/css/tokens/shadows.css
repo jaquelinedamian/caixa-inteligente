@@ -1,0 +1,41 @@
+/* =========================================================
+   TOKENS - SHADOWS
+   Projeto TCC
+   ========================================================= */
+
+:root {
+  /* ================================
+     SOMBRAS SUAVES
+  ================================= */
+  --shadow-xs: 0 1px 2px rgba(11, 31, 42, 0.04);
+  --shadow-sm: 0 2px 6px rgba(11, 31, 42, 0.06);
+  --shadow-md: 0 6px 16px rgba(11, 31, 42, 0.08);
+  --shadow-lg: 0 10px 24px rgba(11, 31, 42, 0.10);
+  --shadow-xl: 0 16px 40px rgba(11, 31, 42, 0.12);
+
+  /* ================================
+     SOMBRAS INTERNAS
+  ================================= */
+  --shadow-inset-sm: inset 0 1px 2px rgba(11, 31, 42, 0.05);
+  --shadow-inset-md: inset 0 2px 4px rgba(11, 31, 42, 0.08);
+
+  /* ================================
+     SOMBRAS DE FOCO / ESTADO
+  ================================= */
+  --shadow-focus: 0 0 0 0.2rem rgba(47, 90, 166, 0.18);
+  --shadow-focus-strong: 0 0 0 0.25rem rgba(47, 90, 166, 0.25);
+
+  /* ================================
+     SOMBRAS ESPECÍFICAS DO SISTEMA
+  ================================= */
+  --shadow-card: var(--shadow-sm);
+  --shadow-card-hover: var(--shadow-md);
+
+  --shadow-dropdown: var(--shadow-md);
+  --shadow-modal: var(--shadow-lg);
+  --shadow-sidebar: 2px 0 12px rgba(11, 31, 42, 0.06);
+  --shadow-header: 0 2px 8px rgba(11, 31, 42, 0.05);
+
+  --shadow-button: 0 2px 4px rgba(11, 31, 42, 0.08);
+  --shadow-button-hover: 0 4px 10px rgba(11, 31, 42, 0.10);
+}

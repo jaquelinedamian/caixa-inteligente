@@ -1,0 +1,344 @@
+/* =========================================================
+   LAYOUTS - DASHBOARD LAYOUT
+   Projeto TCC
+   ========================================================= */
+
+/* ================================
+   WRAPPER
+================================= */
+.dashboard-layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  width: 100%;
+  min-width: 0;
+}
+
+/* ================================
+   HEADER DO DASHBOARD
+================================= */
+.dashboard-layout-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.dashboard-layout-header-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.dashboard-layout-title {
+  margin: 0;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-text-primary);
+}
+
+.dashboard-layout-subtitle {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+  max-width: 760px;
+}
+
+.dashboard-layout-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+/* ================================
+   GRID PRINCIPAL
+================================= */
+.dashboard-layout-grid {
+  display: grid;
+  gap: var(--spacing-lg);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+/* ================================
+   COLUNAS BASE
+================================= */
+.dashboard-col-12 { grid-column: span 12; }
+.dashboard-col-9  { grid-column: span 9; }
+.dashboard-col-8  { grid-column: span 8; }
+.dashboard-col-6  { grid-column: span 6; }
+.dashboard-col-4  { grid-column: span 4; }
+.dashboard-col-3  { grid-column: span 3; }
+
+/* ================================
+   LINHAS E BLOCOS
+================================= */
+.dashboard-layout-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  min-width: 0;
+}
+
+.dashboard-layout-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.dashboard-layout-section-title {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.dashboard-layout-section-subtitle {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.dashboard-layout-section-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+/* ================================
+   GRID DE MÉTRICAS
+================================= */
+.dashboard-metrics-grid {
+  display: grid;
+  gap: var(--spacing-md);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.dashboard-metrics-grid.is-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.dashboard-metrics-grid.is-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* ================================
+   GRID DE CARDS INTERNOS
+================================= */
+.dashboard-cards-grid {
+  display: grid;
+  gap: var(--spacing-md);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.dashboard-cards-grid.is-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.dashboard-cards-grid.is-1 {
+  grid-template-columns: 1fr;
+}
+
+/* ================================
+   COLUNA LATERAL
+================================= */
+.dashboard-layout-aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  min-width: 0;
+}
+
+/* ================================
+   ÁREA PRINCIPAL
+================================= */
+.dashboard-layout-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  min-width: 0;
+}
+
+/* ================================
+   TOOLBAR
+================================= */
+.dashboard-layout-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.dashboard-layout-toolbar-left,
+.dashboard-layout-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+/* ================================
+   RESUMO RÁPIDO
+================================= */
+.dashboard-layout-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.dashboard-layout-summary-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+
+  min-height: 36px;
+  padding: 0.5rem 0.875rem;
+
+  background-color: var(--color-surface-soft);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+/* ================================
+   STACK VERTICAL
+================================= */
+.dashboard-layout-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+/* ================================
+   DIVISÃO DE ÁREAS
+================================= */
+.dashboard-layout-split {
+  display: grid;
+  gap: var(--spacing-lg);
+  grid-template-columns: minmax(0, 2fr) minmax(320px, 1fr);
+}
+
+.dashboard-layout-split.is-reverse {
+  grid-template-columns: minmax(320px, 1fr) minmax(0, 2fr);
+}
+
+/* ================================
+   DASHBOARD COM HERO
+================================= */
+.dashboard-layout-hero {
+  padding: var(--spacing-lg);
+  background: linear-gradient(
+    180deg,
+    var(--color-primary-light) 0%,
+    var(--color-surface) 100%
+  );
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.dashboard-layout-hero-title {
+  margin: 0 0 var(--spacing-xs);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-tight);
+}
+
+.dashboard-layout-hero-text {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  max-width: 760px;
+}
+
+/* ================================
+   RESPONSIVIDADE
+================================= */
+@media (max-width: 1199.98px) {
+  .dashboard-metrics-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-cards-grid.is-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-layout-split,
+  .dashboard-layout-split.is-reverse {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .dashboard-layout-grid {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  .dashboard-col-12,
+  .dashboard-col-9,
+  .dashboard-col-8,
+  .dashboard-col-6,
+  .dashboard-col-4,
+  .dashboard-col-3 {
+    grid-column: span 1;
+  }
+
+  .dashboard-layout-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .dashboard-layout-actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .dashboard-layout {
+    gap: var(--spacing-md);
+  }
+
+  .dashboard-layout-title,
+  .dashboard-layout-hero-title {
+    font-size: var(--font-size-xl);
+  }
+
+  .dashboard-layout-subtitle,
+  .dashboard-layout-hero-text {
+    font-size: var(--font-size-xs);
+  }
+
+  .dashboard-metrics-grid,
+  .dashboard-metrics-grid.is-3,
+  .dashboard-metrics-grid.is-2,
+  .dashboard-cards-grid,
+  .dashboard-cards-grid.is-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-layout-toolbar,
+  .dashboard-layout-toolbar-left,
+  .dashboard-layout-toolbar-right,
+  .dashboard-layout-section-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .dashboard-layout-hero {
+    padding: var(--spacing-md);
+  }
+}

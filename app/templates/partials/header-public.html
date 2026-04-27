@@ -1,0 +1,118 @@
+<style>
+
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  opacity: 0;
+  visibility: hidden;
+  transition: .2s ease;
+  z-index: 1040;
+}
+
+.mobile-menu-overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  right: -320px;
+  width: 320px;
+  max-width: 85vw;
+  height: 100vh;
+  background: #fff;
+  z-index: 1050;
+  transition: .2s ease;
+  padding: 1rem;
+}
+
+.mobile-drawer.is-open {
+  right: 0;
+}
+
+.mobile-link {
+  display: block;
+  padding: .875rem 0;
+  color: #111827;
+  text-decoration: none;
+}
+
+.menu-open {
+  overflow: hidden;
+}
+
+</style>
+
+<header class="header-app header-app-mobile">
+  <div class="container">
+    <nav class="navbar-app d-flex align-items-center justify-content-between">
+
+      <div class="navbar-app-side d-flex align-items-center justify-content-start gap-2">
+        <a href="javascript:history.back()" class="navbar-app-back" aria-label="Voltar para a tela anterior">
+          <span class="navbar-app-back-icon" aria-hidden="true">
+            <i class="bi bi-chevron-left fs-2"></i>
+          </span>
+        </a>
+
+        <a href="{{ url_for('main.home') }}" class="navbar-app-logo d-flex align-items-center text-decoration-none" aria-label="Ir para a página inicial">
+          <img
+            src="{{ url_for('static', filename='img/logo-caixa-inteligente.svg') }}"
+            alt="Logo Caixa Inteligente"
+            class="navbar-app-logo-img"
+          />
+        </a>
+      </div>
+
+      <div class="navbar-app-title-wrap text-center">
+        <h1 class="navbar-app-title mb-0">{{ page_title|default('Login') }}</h1>
+      </div>
+
+      <div class="navbar-app-side d-flex align-items-center justify-content-end">
+        <button
+          class="navbar-app-toggle"
+          id="mobileMenuToggle"
+          type="button"
+          aria-label="Abrir menu"
+          aria-controls="mobileMenu"
+          aria-expanded="false"
+        >
+          <i class="bi bi-list fs-1" aria-hidden="true"></i>
+        </button>
+      </div>
+
+    </nav>
+  </div>
+</header>
+
+<div id="mobileMenuOverlay" class="mobile-menu-overlay"></div>
+
+<aside id="mobileMenu" class="mobile-drawer" aria-hidden="true">
+  <div class="mobile-drawer-header d-flex align-items-center justify-content-between">
+    <a href="{{ url_for('main.home') }}" class="mobile-drawer-brand d-flex align-items-center text-decoration-none" aria-label="Ir para a página inicial">
+      <img
+        src="{{ url_for('static', filename='img/logo-caixa-inteligente.svg') }}"
+        alt="Logo Caixa Inteligente"
+        class="mobile-drawer-logo"
+      />
+    </a>
+
+    <button id="mobileMenuClose" class="mobile-close-btn" type="button" aria-label="Fechar menu">
+      <i class="bi bi-x-lg" aria-hidden="true"></i>
+    </button>
+  </div>
+
+  <nav class="mobile-drawer-nav">
+    <a href="{{ url_for('main.home') }}" class="mobile-link">Home</a>
+    <a href="{{ url_for('main.horarios') }}" class="mobile-link">Horários</a>
+    <a href="{{ url_for('main.historico') }}" class="mobile-link">Histórico</a>
+    <a href="{{ url_for('main.dispositivos') }}" class="mobile-link">Dispositivos</a>
+    <a href="{{ url_for('main.perfil') }}" class="mobile-link">Perfil</a>
+    <a href="{{ url_for('main.configuracao_dispositivo') }}" class="mobile-link">Configuração do Dispositivo</a>
+
+    <div class="mobile-divider"></div>
+
+    <a href="{{ url_for('main.login') }}" class="mobile-link">Sair</a>
+  </nav>
+</aside>

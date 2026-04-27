@@ -1,0 +1,198 @@
+/* =========================================================
+   BASE - HELPERS
+   Projeto TCC
+   Utilitários complementares ao Bootstrap
+   ========================================================= */
+
+/* ================================
+   DISPLAY
+================================= */
+.d-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.d-flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.d-flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ================================
+   GAP (quando não usar Bootstrap)
+================================= */
+.gap-xs { gap: var(--spacing-xs); }
+.gap-sm { gap: var(--spacing-sm); }
+.gap-md { gap: var(--spacing-md); }
+.gap-lg { gap: var(--spacing-lg); }
+
+/* ================================
+   WIDTH / HEIGHT
+================================= */
+.w-fit {
+  width: fit-content;
+}
+
+.h-fit {
+  height: fit-content;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  height: 100%;
+}
+
+/* ================================
+   TEXT ALIGN
+================================= */
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* ================================
+   TEXT UTILITIES
+================================= */
+.text-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.text-semibold {
+  font-weight: var(--font-weight-semibold);
+}
+
+.text-medium {
+  font-weight: var(--font-weight-medium);
+}
+
+/* ================================
+   TRUNCATE (texto cortado)
+================================= */
+.text-truncate-1 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.text-truncate-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ================================
+   BORDER RADIUS
+================================= */
+.radius-sm { border-radius: var(--radius-sm); }
+.radius-md { border-radius: var(--radius-md); }
+.radius-lg { border-radius: var(--radius-lg); }
+.radius-xl { border-radius: var(--radius-xl); }
+.radius-pill { border-radius: var(--radius-pill); }
+
+/* ================================
+   SHADOW
+================================= */
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+
+/* ================================
+   CURSOR
+================================= */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-default {
+  cursor: default;
+}
+
+/* ================================
+   OVERFLOW
+================================= */
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.overflow-auto {
+  overflow: auto;
+}
+
+/* ================================
+   POSITION
+================================= */
+.position-relative {
+  position: relative;
+}
+
+.position-absolute {
+  position: absolute;
+}
+
+/* ================================
+   Z-INDEX
+================================= */
+.z-1 { z-index: 1; }
+.z-10 { z-index: 10; }
+.z-100 { z-index: 100; }
+.z-modal { z-index: 1050; }
+
+/* ================================
+   VISIBILITY
+================================= */
+.hidden {
+  display: none !important;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+/* ================================
+   DIVIDER
+================================= */
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-divider);
+  margin: var(--spacing-md) 0;
+}
+
+/* ================================
+   SCROLL UTIL
+================================= */
+.scroll-y {
+  overflow-y: auto;
+}
+
+.scroll-x {
+  overflow-x: auto;
+}
+
+/* ================================
+   TRANSITION
+================================= */
+.transition {
+  transition: var(--transition-base);
+}
+
+.transition-fast {
+  transition: var(--transition-fast);
+}

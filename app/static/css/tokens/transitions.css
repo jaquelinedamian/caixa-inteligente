@@ -1,0 +1,50 @@
+/* =========================================================
+   TOKENS - TRANSITIONS
+   Projeto TCC
+   ========================================================= */
+
+:root {
+  /* ================================
+     DURAÇÕES
+  ================================= */
+  --transition-duration-fast: 0.15s;
+  --transition-duration-base: 0.25s;
+  --transition-duration-slow: 0.4s;
+
+  /* ================================
+     EASING
+  ================================= */
+  --transition-ease-default: ease;
+  --transition-ease-in-out: ease-in-out;
+  --transition-ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ================================
+     TRANSIÇÕES PRONTAS
+  ================================= */
+  --transition-fast: all var(--transition-duration-fast) var(--transition-ease-default);
+  --transition-base: all var(--transition-duration-base) var(--transition-ease-soft);
+  --transition-slow: all var(--transition-duration-slow) var(--transition-ease-in-out);
+
+  /* ================================
+     TRANSIÇÕES ESPECÍFICAS
+  ================================= */
+  --transition-color: color var(--transition-duration-base) var(--transition-ease-soft),
+    background-color var(--transition-duration-base) var(--transition-ease-soft),
+    border-color var(--transition-duration-base) var(--transition-ease-soft);
+
+  --transition-opacity: opacity var(--transition-duration-base) var(--transition-ease-soft);
+
+  --transition-transform: transform var(--transition-duration-base) var(--transition-ease-soft);
+
+  --transition-shadow: box-shadow var(--transition-duration-base) var(--transition-ease-soft);
+
+  --transition-visibility: opacity var(--transition-duration-base) var(--transition-ease-soft),
+    visibility var(--transition-duration-base) var(--transition-ease-soft);
+
+  --transition-interactive:
+    color var(--transition-duration-base) var(--transition-ease-soft),
+    background-color var(--transition-duration-base) var(--transition-ease-soft),
+    border-color var(--transition-duration-base) var(--transition-ease-soft),
+    box-shadow var(--transition-duration-base) var(--transition-ease-soft),
+    transform var(--transition-duration-fast) var(--transition-ease-soft);
+}

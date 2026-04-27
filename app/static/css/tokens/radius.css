@@ -1,0 +1,26 @@
+
+/* =========================================================
+   TOKENS - RADIUS
+   Projeto TCC
+   ========================================================= */
+
+:root {
+  /* Base */
+  --radius-xs: 0.25rem;   /* 4px */
+  --radius-sm: 0.375rem;  /* 6px */
+  --radius-md: 0.5rem;    /* 8px */
+  --radius-lg: 0.75rem;   /* 12px */
+  --radius-xl: 1rem;      /* 16px */
+  --radius-2xl: 1.5rem;   /* 24px */
+
+  /* Semânticos (usar nos componentes) */
+  --radius-input: var(--radius-md);
+  --radius-button: var(--radius-md);
+  --radius-card: var(--radius-xl);
+  --radius-modal: var(--radius-xl);
+  --radius-badge: var(--radius-sm);
+
+  /* Especiais */
+  --radius-pill: 999px;
+  --radius-avatar: 50%;
+}

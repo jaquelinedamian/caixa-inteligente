@@ -1,0 +1,244 @@
+/* =========================================================
+   COMPONENTS - MODALS
+   Projeto TCC
+   ========================================================= */
+
+/* ================================
+   BACKDROP
+================================= */
+.modal-backdrop-app {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-color: var(--color-overlay-dark);
+  backdrop-filter: blur(2px);
+
+  z-index: 1040;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition-opacity);
+}
+
+.modal-backdrop-app.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ================================
+   CONTAINER
+================================= */
+.modal-app {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: var(--spacing-lg);
+
+  z-index: 1050;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition: var(--transition-opacity);
+}
+
+.modal-app.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* ================================
+   CONTENT
+================================= */
+.modal-content-app {
+  width: 100%;
+  max-width: 520px;
+
+  background-color: var(--color-surface);
+  border-radius: var(--radius-modal);
+  box-shadow: var(--shadow-modal);
+
+  display: flex;
+  flex-direction: column;
+
+  transform: translateY(12px);
+  transition: var(--transition-transform), var(--transition-opacity);
+}
+
+.modal-app.is-active .modal-content-app {
+  transform: translateY(0);
+}
+
+/* ================================
+   TAMANHOS
+================================= */
+.modal-sm .modal-content-app {
+  max-width: 360px;
+}
+
+.modal-lg .modal-content-app {
+  max-width: 720px;
+}
+
+.modal-xl .modal-content-app {
+  max-width: 960px;
+}
+
+/* ================================
+   HEADER
+================================= */
+.modal-header-app {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+
+  padding: var(--spacing-card-padding);
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.modal-title-app {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.modal-close-app {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  border-radius: var(--radius-pill);
+  background-color: transparent;
+  color: var(--color-text-muted);
+
+  cursor: pointer;
+  transition: var(--transition-interactive);
+}
+
+.modal-close-app:hover {
+  background-color: var(--color-surface-soft);
+  color: var(--color-text-primary);
+}
+
+/* ================================
+   BODY
+================================= */
+.modal-body-app {
+  padding: var(--spacing-card-padding);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+/* ================================
+   FOOTER
+================================= */
+.modal-footer-app {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+
+  padding: var(--spacing-card-padding);
+  border-top: 1px solid var(--color-divider);
+}
+
+/* ================================
+   VARIAÇÕES DE FOOTER
+================================= */
+.modal-footer-end {
+  justify-content: flex-end;
+}
+
+.modal-footer-center {
+  justify-content: center;
+}
+
+/* ================================
+   MODAL DE ALERTA
+================================= */
+.modal-app-alert .modal-content-app {
+  border-top: 4px solid var(--color-alert);
+}
+
+.modal-app-emergency .modal-content-app {
+  border-top: 4px solid var(--color-emergency);
+}
+
+/* ================================
+   MODAL COM ÍCONE
+================================= */
+.modal-icon-app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 56px;
+  height: 56px;
+
+  border-radius: var(--radius-xl);
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
+
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+/* ================================
+   MODAL SCROLL
+================================= */
+.modal-body-scroll {
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+/* ================================
+   FULLSCREEN (mobile)
+================================= */
+@media (max-width: 575.98px) {
+  .modal-app {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .modal-content-app {
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+/* ================================
+   ANIMAÇÃO SUAVE
+================================= */
+.modal-app,
+.modal-content-app {
+  will-change: opacity, transform;
+}
+
+/* ================================
+   INTEGRAÇÃO COM BOOTSTRAP
+================================= */
+.modal .modal-content {
+  border-radius: var(--radius-modal);
+  box-shadow: var(--shadow-modal);
+}

@@ -1,0 +1,369 @@
+/* =========================================================
+   COMPONENTS - STATUS
+   Projeto TCC
+   Classes semânticas de estado do sistema
+   ========================================================= */
+
+/* ================================
+   TEXTO DE STATUS
+================================= */
+.status-text-success {
+  color: var(--color-success) !important;
+}
+
+.status-text-warning {
+  color: var(--color-warning) !important;
+}
+
+.status-text-danger {
+  color: var(--color-danger) !important;
+}
+
+.status-text-info {
+  color: var(--color-info) !important;
+}
+
+.status-text-alert {
+  color: var(--color-alert) !important;
+}
+
+.status-text-emergency {
+  color: var(--color-emergency) !important;
+}
+
+.status-text-muted {
+  color: var(--color-text-muted) !important;
+}
+
+/* ================================
+   BACKGROUND DE STATUS
+================================= */
+.status-bg-success {
+  background-color: var(--color-success-light) !important;
+}
+
+.status-bg-warning {
+  background-color: var(--color-warning-light) !important;
+}
+
+.status-bg-danger {
+  background-color: var(--color-danger-light) !important;
+}
+
+.status-bg-info {
+  background-color: var(--color-info-light) !important;
+}
+
+.status-bg-alert {
+  background-color: var(--color-alert-light) !important;
+}
+
+.status-bg-emergency {
+  background-color: var(--color-emergency-light) !important;
+}
+
+.status-bg-neutral {
+  background-color: var(--color-surface-soft) !important;
+}
+
+/* ================================
+   BORDA DE STATUS
+================================= */
+.status-border-success {
+  border-color: var(--color-success) !important;
+}
+
+.status-border-warning {
+  border-color: var(--color-warning) !important;
+}
+
+.status-border-danger {
+  border-color: var(--color-danger) !important;
+}
+
+.status-border-info {
+  border-color: var(--color-info) !important;
+}
+
+.status-border-alert {
+  border-color: var(--color-alert) !important;
+}
+
+.status-border-emergency {
+  border-color: var(--color-emergency) !important;
+}
+
+/* ================================
+   STATUS EM BLOCO
+================================= */
+.status-box-app {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+
+  min-height: 36px;
+  padding: 0.5rem 0.875rem;
+
+  border: 1px solid transparent;
+  border-radius: var(--radius-lg);
+
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+}
+
+.status-box-success {
+  background-color: var(--color-success-light);
+  border-color: rgba(46, 125, 50, 0.15);
+  color: var(--color-success);
+}
+
+.status-box-warning {
+  background-color: var(--color-warning-light);
+  border-color: rgba(237, 137, 54, 0.15);
+  color: var(--color-warning);
+}
+
+.status-box-danger {
+  background-color: var(--color-danger-light);
+  border-color: rgba(197, 48, 48, 0.15);
+  color: var(--color-danger);
+}
+
+.status-box-info {
+  background-color: var(--color-info-light);
+  border-color: rgba(49, 130, 206, 0.15);
+  color: var(--color-info);
+}
+
+.status-box-alert {
+  background-color: var(--color-alert-light);
+  border-color: rgba(221, 107, 32, 0.15);
+  color: var(--color-alert);
+}
+
+.status-box-emergency {
+  background-color: var(--color-emergency-light);
+  border-color: rgba(176, 0, 32, 0.15);
+  color: var(--color-emergency);
+}
+
+.status-box-neutral {
+  background-color: var(--color-surface-soft);
+  border-color: var(--color-border);
+  color: var(--color-text-secondary);
+}
+
+/* ================================
+   PONTO DE STATUS
+================================= */
+.status-dot {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+}
+
+.status-dot::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: currentColor;
+  flex-shrink: 0;
+}
+
+.status-dot-success {
+  color: var(--color-success);
+}
+
+.status-dot-warning {
+  color: var(--color-warning);
+}
+
+.status-dot-danger {
+  color: var(--color-danger);
+}
+
+.status-dot-info {
+  color: var(--color-info);
+}
+
+.status-dot-alert {
+  color: var(--color-alert);
+}
+
+.status-dot-emergency {
+  color: var(--color-emergency);
+}
+
+.status-dot-neutral {
+  color: var(--color-text-muted);
+}
+
+/* ================================
+   STATUS LATERAL
+================================= */
+.status-accent-success {
+  border-left: 4px solid var(--color-success) !important;
+}
+
+.status-accent-warning {
+  border-left: 4px solid var(--color-warning) !important;
+}
+
+.status-accent-danger {
+  border-left: 4px solid var(--color-danger) !important;
+}
+
+.status-accent-info {
+  border-left: 4px solid var(--color-info) !important;
+}
+
+.status-accent-alert {
+  border-left: 4px solid var(--color-alert) !important;
+}
+
+.status-accent-emergency {
+  border-left: 4px solid var(--color-emergency) !important;
+}
+
+/* ================================
+   SOMBRA DE STATUS
+================================= */
+.status-shadow-success {
+  box-shadow: 0 0 0 0.2rem rgba(46, 125, 50, 0.08) !important;
+}
+
+.status-shadow-warning {
+  box-shadow: 0 0 0 0.2rem rgba(237, 137, 54, 0.08) !important;
+}
+
+.status-shadow-danger {
+  box-shadow: 0 0 0 0.2rem rgba(197, 48, 48, 0.08) !important;
+}
+
+.status-shadow-info {
+  box-shadow: 0 0 0 0.2rem rgba(49, 130, 206, 0.08) !important;
+}
+
+/* ================================
+   STATUS SEMÂNTICOS DO SISTEMA
+================================= */
+.status-confirmado {
+  color: var(--color-success) !important;
+}
+
+.status-cancelado {
+  color: var(--color-danger) !important;
+}
+
+.status-reagendado {
+  color: var(--color-warning) !important;
+}
+
+.status-agendado {
+  color: var(--color-info) !important;
+}
+
+.status-concluido {
+  color: var(--color-status-completed) !important;
+}
+
+.status-pendente {
+  color: var(--color-status-pending) !important;
+}
+
+.status-ativo {
+  color: var(--color-status-active) !important;
+}
+
+.status-inativo {
+  color: var(--color-text-muted) !important;
+}
+
+.status-alerta {
+  color: var(--color-alert) !important;
+}
+
+.status-emergencia {
+  color: var(--color-emergency) !important;
+}
+
+/* ================================
+   STATUS BADGES PRONTOS
+================================= */
+.status-badge-confirmado {
+  background-color: var(--color-success-light);
+  color: var(--color-success);
+  border-color: var(--color-success-light);
+}
+
+.status-badge-cancelado {
+  background-color: var(--color-danger-light);
+  color: var(--color-danger);
+  border-color: var(--color-danger-light);
+}
+
+.status-badge-reagendado {
+  background-color: var(--color-warning-light);
+  color: var(--color-warning);
+  border-color: var(--color-warning-light);
+}
+
+.status-badge-agendado {
+  background-color: var(--color-info-light);
+  color: var(--color-info);
+  border-color: var(--color-info-light);
+}
+
+.status-badge-concluido {
+  background-color: var(--color-surface-soft);
+  color: var(--color-status-completed);
+  border-color: var(--color-border);
+}
+
+.status-badge-alerta {
+  background-color: var(--color-alert-light);
+  color: var(--color-alert);
+  border-color: var(--color-alert-light);
+}
+
+.status-badge-emergencia {
+  background-color: var(--color-emergency-light);
+  color: var(--color-emergency);
+  border-color: var(--color-emergency-light);
+}
+
+/* ================================
+   ESTADOS DE DISPONIBILIDADE
+================================= */
+.status-available {
+  color: var(--color-success) !important;
+}
+
+.status-busy {
+  color: var(--color-warning) !important;
+}
+
+.status-unavailable {
+  color: var(--color-danger) !important;
+}
+
+.status-offline {
+  color: var(--color-text-muted) !important;
+}
+
+/* ================================
+   OPACIDADE AUXILIAR
+================================= */
+.status-disabled {
+  opacity: 0.6;
+}
+
+.status-hidden {
+  visibility: hidden;
+}

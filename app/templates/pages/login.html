@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>{{ page_title|default('Login') }} | Caixa Inteligente</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+<body class="bg-white">
+
+  {% include 'partials/header-public.html' %}
+  
+  <main class="min-vh-100 d-flex align-items-center pt-5" aria-label="Tela de login">
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-5 col-xl-4">
+
+          <section class="py-4">
+
+            <div class="mb-4">
+              <img 
+                src="{{ url_for('static', filename='img/logo-caixa-inteligente-azul.svg') }}" 
+                alt="Logo Caixa Inteligente" 
+                class="img-fluid mb-4"
+                style="max-width: 180px;"
+              >
+
+              <h1 class="display-5 fw-bold text-dark mb-2">Bem-vindo</h1>
+              <p class="fs-5 text-secondary mb-0">Faça login para continuar</p>
+            </div>
+
+            <form method="post" novalidate>
+              <div class="row gy-3">
+
+                <div class="col-12">
+                  <label for="email" class="form-label text-dark">Email</label>
+                  <input type="email" class="form-control form-control-lg" id="email" name="email">
+                </div>
+
+                <div class="col-12">
+                  <label for="senha" class="form-label text-dark">Senha</label>
+                  <input type="password" class="form-control form-control-lg" id="senha" name="senha">
+                </div>
+
+                <div class="col-12">
+                  <div class="d-flex justify-content-between align-items-center gap-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="lembrar">
+                      <label class="form-check-label text-secondary" for="lembrar">
+                        Lembrar
+                      </label>
+                    </div>
+
+                    <a href="{{ url_for('main.recuperar_senha') }}" class="text-secondary text-decoration-none">
+                      Esqueceu a senha?
+                    </a>
+                  </div>
+                </div>
+
+                <div class="col-12 mt-4">
+                  <button type="submit" class="btn btn-primary btn-lg w-100">
+                    Fazer Login
+                  </button>
+                </div>
+
+                <div class="col-12">
+                  <a href="#" class="btn btn-outline-primary btn-lg w-100 d-flex align-items-center justify-content-center gap-2">
+                    <span>Entrar com Facebook</span>
+                  </a>
+                </div>
+
+              </div>
+            </form>
+
+            <div class="text-center mt-5 pt-4">
+              <p class="fs-5 text-secondary mb-0">
+                Não tem cadastro?
+                <a href="{{ url_for('main.cadastro') }}" class="fw-semibold text-dark text-decoration-none">
+                  Clique aqui
+                </a>
+              </p>
+            </div>
+
+          </section>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  {% include 'partials/footer-public.html' %}
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  function initMobileMenu() {
+    const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+    const mobileMenuClose = document.getElementById("mobileMenuClose");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const mobileMenuOverlay = document.getElementById("mobileMenuOverlay");
+
+    if (!mobileMenuToggle || !mobileMenuClose || !mobileMenu || !mobileMenuOverlay) return;
+
+    function openMobileMenu() {
+      mobileMenu.classList.add("is-open");
+      mobileMenuOverlay.classList.add("is-active");
+      mobileMenu.setAttribute("aria-hidden", "false");
+      mobileMenuToggle.setAttribute("aria-expanded", "true");
+      document.body.classList.add("menu-open");
+    }
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove("is-open");
+      mobileMenuOverlay.classList.remove("is-active");
+      mobileMenu.setAttribute("aria-hidden", "true");
+      mobileMenuToggle.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("menu-open");
+    }
+
+    mobileMenuToggle.addEventListener("click", openMobileMenu);
+    mobileMenuClose.addEventListener("click", closeMobileMenu);
+    mobileMenuOverlay.addEventListener("click", closeMobileMenu);
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") closeMobileMenu();
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", initMobileMenu);
+</script>
+</body>
+</html>

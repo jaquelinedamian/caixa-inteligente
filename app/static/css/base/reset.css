@@ -1,0 +1,126 @@
+/* =========================================================
+   BASE - RESET
+   Projeto TCC
+   Reset leve e compatível com Bootstrap 5.3
+   ========================================================= */
+
+/* ================================
+   BOX SIZING
+================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ================================
+   REMOVER MARGENS PADRÃO
+================================= */
+body,
+h1, h2, h3, h4, h5, h6,
+p,
+ul, ol,
+figure,
+blockquote {
+  margin: 0;
+}
+
+/* ================================
+   LISTAS
+================================= */
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+/* ================================
+   LINKS
+================================= */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ================================
+   IMAGENS E MÍDIA
+================================= */
+img,
+picture,
+video,
+canvas,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* ================================
+   FORMULÁRIOS
+================================= */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* ================================
+   BOTÕES
+================================= */
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* ================================
+   TABELAS
+================================= */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* ================================
+   SCROLL SUAVE
+================================= */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* ================================
+   REDUÇÃO DE ANIMAÇÃO (ACESSIBILIDADE)
+================================= */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ================================
+   ALTURA BASE
+================================= */
+html,
+body {
+  height: 100%;
+}
+
+/* ================================
+   INPUTS (CONSISTÊNCIA)
+================================= */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+/* ================================
+   SELEÇÃO DE TEXTO
+================================= */
+::selection {
+  background-color: var(--color-primary-light);
+  color: var(--color-text-primary);
+}

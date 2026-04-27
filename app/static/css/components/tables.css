@@ -1,0 +1,259 @@
+/* =========================================================
+   COMPONENTS - TABLES
+   Projeto TCC
+   ========================================================= */
+
+/* ================================
+   WRAPPER
+================================= */
+.table-app-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.table-app-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+
+.table-app-wrapper::-webkit-scrollbar-track {
+  background: var(--color-surface-muted);
+}
+
+.table-app-wrapper::-webkit-scrollbar-thumb {
+  background: var(--color-border-strong);
+  border-radius: var(--radius-pill);
+}
+
+/* ================================
+   TABELA BASE
+================================= */
+.table-app {
+  width: 100%;
+  margin: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+}
+
+.table-app th,
+.table-app td {
+  padding: 0.875rem 1rem;
+  vertical-align: middle;
+  text-align: left;
+  border-bottom: 1px solid var(--color-divider);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-base);
+}
+
+.table-app tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* ================================
+   CABEÇALHO
+================================= */
+.table-app thead th {
+  background-color: var(--color-surface-soft);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.table-app thead th:first-child {
+  border-top-left-radius: var(--radius-card);
+}
+
+.table-app thead th:last-child {
+  border-top-right-radius: var(--radius-card);
+}
+
+/* ================================
+   LINHAS
+================================= */
+.table-app tbody tr {
+  transition: var(--transition-color), var(--transition-shadow);
+}
+
+.table-app tbody tr:hover {
+  background-color: var(--color-surface-soft);
+}
+
+.table-app tbody tr.is-clickable {
+  cursor: pointer;
+}
+
+.table-app tbody tr.is-selected {
+  background-color: var(--color-primary-light);
+}
+
+/* ================================
+   CÉLULAS
+================================= */
+.table-app-cell-title {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  line-height: 1.3;
+}
+
+.table-app-cell-subtitle {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+
+.table-app-cell-meta {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+/* ================================
+   AÇÕES
+================================= */
+.table-app-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  flex-wrap: wrap;
+}
+
+.table-app-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  background-color: transparent;
+
+  transition: var(--transition-interactive);
+}
+
+.table-app-action:hover,
+.table-app-action:focus-visible {
+  background-color: var(--color-surface-soft);
+  color: var(--color-primary-dark);
+  outline: none;
+}
+
+/* ================================
+   ALINHAMENTO
+================================= */
+.table-app .text-start {
+  text-align: left;
+}
+
+.table-app .text-center {
+  text-align: center;
+}
+
+.table-app .text-end {
+  text-align: right;
+}
+
+/* ================================
+   TAMANHOS
+================================= */
+.table-app-sm th,
+.table-app-sm td {
+  padding: 0.625rem 0.875rem;
+  font-size: var(--font-size-xs);
+}
+
+.table-app-lg th,
+.table-app-lg td {
+  padding: 1rem 1.25rem;
+}
+
+/* ================================
+   TABELA COM LINHAS ZEBRADAS
+================================= */
+.table-app-striped tbody tr:nth-child(even) {
+  background-color: rgba(11, 31, 42, 0.02);
+}
+
+.table-app-striped tbody tr:hover {
+  background-color: var(--color-surface-soft);
+}
+
+/* ================================
+   TABELA FLAT
+================================= */
+.table-app-flat-wrapper {
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.table-app-flat thead th {
+  background-color: transparent;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+/* ================================
+   TABELA DE STATUS
+================================= */
+.table-app-row-success {
+  border-left: 3px solid var(--color-success);
+}
+
+.table-app-row-warning {
+  border-left: 3px solid var(--color-warning);
+}
+
+.table-app-row-danger {
+  border-left: 3px solid var(--color-danger);
+}
+
+.table-app-row-info {
+  border-left: 3px solid var(--color-info);
+}
+
+/* ================================
+   EMPTY STATE
+================================= */
+.table-app-empty {
+  padding: var(--spacing-xl);
+  text-align: center;
+  color: var(--color-text-secondary);
+}
+
+.table-app-empty-title {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.table-app-empty-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+/* ================================
+   RESPONSIVIDADE
+================================= */
+@media (max-width: 767.98px) {
+  .table-app th,
+  .table-app td {
+    padding: 0.75rem;
+  }
+
+  .table-app-actions {
+    flex-wrap: nowrap;
+  }
+}
