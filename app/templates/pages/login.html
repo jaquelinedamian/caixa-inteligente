@@ -12,7 +12,114 @@
 
 <body class="bg-white">
 
+<header class="bg-white border-bottom fixed-top">
+  <div class="container">
 
+    <div class="d-flex align-items-center justify-content-between py-3">
+
+      <!-- LOGO -->
+      <a href="{{ url_for('main.pagina_inicial') }}" class="d-flex align-items-center text-decoration-none">
+        <img 
+          src="{{ url_for('static', filename='img/logo-caixa-inteligente-azul.svg') }}" 
+          alt="Caixa Inteligente" 
+          style="height: 36px;"
+        >
+      </a>
+
+      <!-- MENU DESKTOP -->
+      <nav class="d-none d-md-flex align-items-center gap-4">
+
+        <a href="{{ url_for('main.pagina_inicial') }}"
+           class="text-dark text-decoration-none fw-medium
+           {% if request.endpoint == 'main.pagina_inicial' %}active{% endif %}">
+          Página inicial
+        </a>
+
+        <a href="{{ url_for('main.suporte') }}"
+           class="text-dark text-decoration-none fw-medium
+           {% if request.endpoint == 'main.suporte' %}active{% endif %}">
+          Suporte
+        </a>
+
+        <!-- BOTÃO ENTRAR -->
+        <a href="{{ url_for('main.login') }}"
+           class="btn btn-primary px-4">
+          Entrar
+        </a>
+
+      </nav>
+
+      <!-- BOTÃO MOBILE -->
+      <button class="btn d-md-none" id="mobileMenuToggle" aria-label="Abrir menu">
+        <i class="bi bi-list fs-2"></i>
+      </button>
+
+    </div>
+
+  </div>
+</header>
+
+<!-- ESPAÇO PARA HEADER FIXO -->
+<div style="height: 80px;"></div>
+
+<!-- MENU MOBILE -->
+<div id="mobileMenuOverlay" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-none"></div>
+
+<div id="mobileMenu" class="position-fixed top-0 end-0 bg-white h-100 p-4"
+     style="width: 280px; transform: translateX(100%); transition: 0.3s; z-index: 1050;">
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <strong>Menu</strong>
+    <button class="btn" id="mobileMenuClose">
+      <i class="bi bi-x-lg"></i>
+    </button>
+  </div>
+
+  <nav class="d-flex flex-column gap-3">
+
+    <a href="{{ url_for('main.pagina_inicial') }}"
+       class="text-dark text-decoration-none">
+      Página inicial
+    </a>
+
+    <a href="{{ url_for('main.suporte') }}"
+       class="text-dark text-decoration-none">
+      Suporte
+    </a>
+
+    <a href="{{ url_for('main.login') }}"
+       class="btn btn-primary mt-3">
+      Entrar
+    </a>
+
+  </nav>
+
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const toggle = document.getElementById("mobileMenuToggle");
+  const closeBtn = document.getElementById("mobileMenuClose");
+  const menu = document.getElementById("mobileMenu");
+  const overlay = document.getElementById("mobileMenuOverlay");
+
+  if (!toggle || !closeBtn || !menu || !overlay) return;
+
+  function openMenu() {
+    menu.style.transform = "translateX(0)";
+    overlay.classList.remove("d-none");
+  }
+
+  function closeMenu() {
+    menu.style.transform = "translateX(100%)";
+    overlay.classList.add("d-none");
+  }
+
+  toggle.addEventListener("click", openMenu);
+  closeBtn.addEventListener("click", closeMenu);
+  overlay.addEventListener("click", closeMenu);
+});
+</script>
   
   <main class="min-vh-100 d-flex align-items-center pt-5" aria-label="Tela de login">
     <div class="container py-5">
