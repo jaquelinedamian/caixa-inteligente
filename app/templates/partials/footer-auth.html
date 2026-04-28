@@ -5,17 +5,12 @@
 
 .footer-link {
   color: #6c757d;
-  font-size: 14px; /* aumentei */
+  font-size: 12px;
   transition: all 0.2s ease;
 }
 
 .footer-link i {
   display: block;
-  font-size: 22px; /* ícone maior */
-}
-
-.footer-link small {
-  font-size: 13px; /* texto maior */
 }
 
 .footer-link.active {
@@ -26,18 +21,18 @@
 .footer-link:hover {
   color: #0d6efd;
 }
-</style>
 
+</style>
 <footer class="footer-app fixed-bottom bg-white border-top">
 
   <div class="container-fluid px-0">
     <nav class="d-flex justify-content-around align-items-center text-center py-2">
 
       <!-- Home -->
-      <a href="{{ url_for('main.pagina_inicial') }}"
+      <a href="{{ url_for('main.home') }}"
          class="footer-link d-flex flex-column align-items-center text-decoration-none
-         {% if request.endpoint == 'main.pagina_inicial' %}active{% endif %}">
-        <i class="bi bi-house"></i>
+         {% if request.endpoint == 'main.home' %}active{% endif %}">
+        <i class="bi bi-house fs-5"></i>
         <small>Home</small>
       </a>
 
@@ -45,15 +40,23 @@
       <a href="{{ url_for('main.horarios') }}"
          class="footer-link d-flex flex-column align-items-center text-decoration-none
          {% if request.endpoint == 'main.horarios' %}active{% endif %}">
-        <i class="bi bi-clock"></i>
+        <i class="bi bi-clock fs-5"></i>
         <small>Horários</small>
+      </a>
+
+      <!-- Histórico -->
+      <a href="{{ url_for('main.historico') }}"
+         class="footer-link d-flex flex-column align-items-center text-decoration-none
+         {% if request.endpoint == 'main.historico' %}active{% endif %}">
+        <i class="bi bi-clock-history fs-5"></i>
+        <small>Histórico</small>
       </a>
 
       <!-- Dispositivos -->
       <a href="{{ url_for('main.dispositivos') }}"
          class="footer-link d-flex flex-column align-items-center text-decoration-none
          {% if request.endpoint == 'main.dispositivos' %}active{% endif %}">
-        <i class="bi bi-cpu"></i>
+        <i class="bi bi-cpu fs-5"></i>
         <small>Dispositivos</small>
       </a>
 
@@ -61,7 +64,7 @@
       <a href="{{ url_for('main.perfil') }}"
          class="footer-link d-flex flex-column align-items-center text-decoration-none
          {% if request.endpoint == 'main.perfil' %}active{% endif %}">
-        <i class="bi bi-person"></i>
+        <i class="bi bi-person fs-5"></i>
         <small>Perfil</small>
       </a>
 
