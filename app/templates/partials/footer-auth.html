@@ -5,7 +5,7 @@
 
 .footer-link {
   color: #6c757d;
-  font-size: 12px;
+  font-size: 16px;
   transition: all 0.2s ease;
 }
 
@@ -44,13 +44,7 @@
         <small>Horários</small>
       </a>
 
-      <!-- Histórico -->
-      <a href="{{ url_for('main.historico') }}"
-         class="footer-link d-flex flex-column align-items-center text-decoration-none
-         {% if request.endpoint == 'main.historico' %}active{% endif %}">
-        <i class="bi bi-clock-history fs-5"></i>
-        <small>Histórico</small>
-      </a>
+
 
       <!-- Dispositivos -->
       <a href="{{ url_for('main.dispositivos') }}"
