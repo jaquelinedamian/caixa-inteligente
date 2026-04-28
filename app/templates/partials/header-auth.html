@@ -1,3 +1,56 @@
+<style>
+/* BASE DO SISTEMA */
+html {
+  font-size: 16px;
+}
+
+/* FORÇA TAMANHO MÍNIMO GLOBAL */
+body,
+p,
+span,
+label,
+input,
+select,
+textarea,
+button,
+a,
+small {
+  font-size: max(1rem, 16px) !important;
+}
+
+/* GARANTE FORMULÁRIOS LEGÍVEIS */
+.form-control,
+.form-select {
+  font-size: max(1rem, 16px) !important;
+  padding: 0.75rem;
+}
+
+/* BOTÕES */
+.btn {
+  font-size: max(1rem, 16px) !important;
+  min-height: 44px; /* acessibilidade */
+}
+
+/* LINKS */
+a {
+  text-decoration: none;
+}
+
+/* TÍTULOS (mantém hierarquia) */
+h1 { font-size: 2rem !important; }
+h2 { font-size: 1.75rem !important; }
+h3 { font-size: 1.5rem !important; }
+h4 { font-size: 1.25rem !important; }
+h5 { font-size: 1.1rem !important; }
+h6 { font-size: 1rem !important; }
+
+/* MELHORIA DE LEITURA */
+body {
+  line-height: 1.5;
+  letter-spacing: 0.3px;
+}
+</style>
+
 <header class="bg-primary text-white sticky-top shadow-sm">
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-dark py-3">
