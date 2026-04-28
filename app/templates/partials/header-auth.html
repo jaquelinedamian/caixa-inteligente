@@ -1,10 +1,11 @@
 <style>
-/* BASE DO SISTEMA */
+
+/* BASE */
 html {
-  font-size: 16px;
+  font-size: 20px; /* agora tudo escala a partir disso */
 }
 
-/* FORÇA TAMANHO MÍNIMO GLOBAL */
+/* FORÇA GLOBAL */
 body,
 p,
 span,
@@ -15,40 +16,37 @@ textarea,
 button,
 a,
 small {
-  font-size: max(1rem, 16px) !important;
+  font-size: max(1rem, 20px) !important;
 }
 
-/* GARANTE FORMULÁRIOS LEGÍVEIS */
+/* FORMULÁRIOS */
 .form-control,
 .form-select {
-  font-size: max(1rem, 16px) !important;
-  padding: 0.75rem;
+  font-size: max(1rem, 20px) !important;
+  padding: 0.9rem;
 }
 
 /* BOTÕES */
 .btn {
-  font-size: max(1rem, 16px) !important;
-  min-height: 44px; /* acessibilidade */
+  font-size: max(1rem, 20px) !important;
+  min-height: 48px; /* maior pra toque */
+  padding: 0.7rem 1.2rem;
 }
 
-/* LINKS */
-a {
-  text-decoration: none;
-}
+/* TÍTULOS (mantém proporção) */
+h1 { font-size: 2.2rem !important; }
+h2 { font-size: 2rem !important; }
+h3 { font-size: 1.7rem !important; }
+h4 { font-size: 1.5rem !important; }
+h5 { font-size: 1.3rem !important; }
+h6 { font-size: 1.1rem !important; }
 
-/* TÍTULOS (mantém hierarquia) */
-h1 { font-size: 2rem !important; }
-h2 { font-size: 1.75rem !important; }
-h3 { font-size: 1.5rem !important; }
-h4 { font-size: 1.25rem !important; }
-h5 { font-size: 1.1rem !important; }
-h6 { font-size: 1rem !important; }
-
-/* MELHORIA DE LEITURA */
+/* MELHOR LEITURA */
 body {
-  line-height: 1.5;
-  letter-spacing: 0.3px;
+  line-height: 1.6;
+  letter-spacing: 0.4px;
 }
+
 </style>
 
 <header class="bg-primary text-white sticky-top shadow-sm">
