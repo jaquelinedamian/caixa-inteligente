@@ -4,116 +4,199 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Configurar Caixa | Caixa Inteligente</title>
+  <title>{{ page_title }} | Caixa Inteligente</title>
 
-  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Bootstrap Icons (CORREÇÃO PRINCIPAL) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
   <style>
-    body {
-      padding-bottom: 80px;
+    .step-indicator {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 1.5rem;
     }
 
-    .footer-app {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: #fff;
-      border-top: 1px solid #e5e5e5;
-      z-index: 999;
-    }
-
-    .footer-link {
+    .step-item {
       flex: 1;
       text-align: center;
-      padding: 10px 0;
+      font-size: .8rem;
       color: #6c757d;
-      text-decoration: none;
-      font-size: 12px;
+      position: relative;
     }
 
-    .footer-link i {
-      display: block;
-      font-size: 20px;
-      margin-bottom: 4px;
+    .step-circle {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      margin: 0 auto 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #e9ecef;
+      color: #6c757d;
+      font-weight: 700;
     }
 
-    .footer-link.active {
+    .step-item.active .step-circle {
+      background: #0d6efd;
+      color: #fff;
+    }
+
+    .step-item.done .step-circle {
+      background: #198754;
+      color: #fff;
+    }
+
+    .step-item.active {
       color: #0d6efd;
-      font-weight: 600;
+      font-weight: 700;
+    }
+
+    .btn-top-back {
+      width: fit-content;
+    }
+
+    main {
+      padding-bottom: 5rem;
     }
   </style>
 </head>
 
 <body class="bg-light">
 
-<!-- HEADER SIMPLES -->
-<header class="bg-primary text-white p-3 d-flex justify-content-between align-items-center">
-  <div class="d-flex align-items-center gap-2">
-    <img src="/img/logo.svg" width="36">
-    <strong>Mad Smart</strong>
-  </div>
-  <button class="btn btn-outline-light">
-    <i class="bi bi-list"></i>
-  </button>
-</header>
+{% include 'partials/header-auth.html' %}
 
-<main class="container py-4">
+<main class="container py-4 mb-5">
+
+  <!-- BOTÃO VOLTAR DA PÁGINA -->
+  <div class="mb-4">
+    <button type="button" class="btn btn-outline-secondary btn-top-back" onclick="voltarPagina()">
+      <i class="bi bi-arrow-left me-1"></i>
+      Voltar
+    </button>
+  </div>
 
   <h1 class="h4 fw-bold mb-2">Configurar caixa</h1>
   <p class="text-secondary mb-4">Vamos fazer isso juntos em poucos passos.</p>
+
+  <!-- SINALIZAÇÃO DAS ETAPAS -->
+  <div class="step-indicator" aria-label="Etapas de configuração">
+    <div class="step-item active" data-indicator="1">
+      <div class="step-circle">1</div>
+      <span>Caixa</span>
+    </div>
+
+    <div class="step-item" data-indicator="2">
+      <div class="step-circle">2</div>
+      <span>Tratamento</span>
+    </div>
+
+    <div class="step-item" data-indicator="3">
+      <div class="step-circle">3</div>
+      <span>Horários</span>
+    </div>
+
+    <div class="step-item" data-indicator="4">
+      <div class="step-circle">4</div>
+      <span>Alertas</span>
+    </div>
+
+    <div class="step-item" data-indicator="5">
+      <div class="step-circle">5</div>
+      <span>Resumo</span>
+    </div>
+  </div>
 
   <!-- PROGRESSO -->
   <div class="progress mb-4" style="height: 10px;">
     <div id="progressBar" class="progress-bar" style="width: 20%"></div>
   </div>
 
-  <form id="formWizard">
+  <form method="post" id="formWizard">
 
     <!-- PASSO 1 -->
     <div class="step" data-step="1">
       <div class="card p-4">
+        <p class="text-primary fw-semibold mb-2">Etapa 1 de 5</p>
         <h2 class="h5 fw-bold mb-3">Qual o nome da sua caixa?</h2>
-        <input id="nomeDispositivo" class="form-control form-control-lg" placeholder="Ex: Caixa da manhã">
+
+        <input
+          name="nome_dispositivo"
+          id="nomeDispositivo"
+          class="form-control form-control-lg"
+          placeholder="Ex: Caixa da manhã"
+          required
+        >
       </div>
     </div>
 
     <!-- PASSO 2 -->
     <div class="step d-none" data-step="2">
       <div class="card p-4">
+        <p class="text-primary fw-semibold mb-2">Etapa 2 de 5</p>
         <h2 class="h5 fw-bold mb-3">Qual o tratamento?</h2>
-        <input id="nomeTratamento" class="form-control form-control-lg" placeholder="Ex: Pressão">
+
+        <input
+          name="nome_tratamento"
+          id="nomeTratamento"
+          class="form-control form-control-lg"
+          placeholder="Ex: Pressão"
+          required
+        >
       </div>
     </div>
 
     <!-- PASSO 3 -->
     <div class="step d-none" data-step="3">
       <div class="card p-4">
-        <h2 class="h5 fw-bold mb-3">Horários</h2>
+        <p class="text-primary fw-semibold mb-2">Etapa 3 de 5</p>
+        <h2 class="h5 fw-bold mb-3">Horários da medicação</h2>
 
+        <label class="form-label" for="ciclo">Ciclo</label>
+        <select id="ciclo" class="form-select form-select-lg">
+          <option value="6">6h</option>
+          <option value="8">8h</option>
+          <option value="12" selected>12h</option>
+          <option value="24">24h</option>
+        </select>
+
+        <label class="form-label mt-3" for="horaInicial">Horário inicial</label>
         <input type="time" id="horaInicial" class="form-control form-control-lg">
-        <button type="button" class="btn btn-outline-primary mt-3" onclick="addHorario()">Adicionar horário</button>
+
+        <label class="form-label mt-3" for="doses">Quantidade de doses</label>
+        <input type="number" id="doses" class="form-control form-control-lg" value="2" min="1">
+
+        <button type="button" class="btn btn-outline-primary mt-3" onclick="gerarHorarios()">
+          Gerar horários
+        </button>
 
         <div id="horarios" class="mt-3"></div>
+
+        <button type="button" class="btn btn-outline-primary mt-3" onclick="addHorario()">
+          + adicionar horário
+        </button>
       </div>
     </div>
 
     <!-- PASSO 4 -->
     <div class="step d-none" data-step="4">
       <div class="card p-4">
+        <p class="text-primary fw-semibold mb-2">Etapa 4 de 5</p>
         <h2 class="h5 fw-bold mb-3">Alertas</h2>
 
-        <div class="form-check form-switch">
-          <input type="checkbox" class="form-check-input" checked>
+        <div class="form-check form-switch mb-2">
+          <input name="alerta_mensagem" type="checkbox" class="form-check-input" value="1" checked>
+          <label class="form-check-label">Mensagem</label>
+        </div>
+
+        <div class="form-check form-switch mb-2">
+          <input name="alerta_som" type="checkbox" class="form-check-input" value="1" checked>
           <label class="form-check-label">Som</label>
         </div>
 
         <div class="form-check form-switch">
-          <input type="checkbox" class="form-check-input" checked>
+          <input name="alerta_led" type="checkbox" class="form-check-input" value="1" checked>
           <label class="form-check-label">LED</label>
         </div>
       </div>
@@ -122,6 +205,7 @@
     <!-- PASSO 5 -->
     <div class="step d-none" data-step="5">
       <div class="card p-4">
+        <p class="text-primary fw-semibold mb-2">Etapa 5 de 5</p>
         <h2 class="h5 fw-bold mb-3">Resumo</h2>
 
         <p><strong>Caixa:</strong> <span id="rCaixa"></span></p>
@@ -132,76 +216,161 @@
 
     <!-- BOTÕES -->
     <div class="d-flex gap-3 mt-4">
-      <button type="button" id="btnBack" class="btn btn-outline-secondary w-50 d-none" onclick="back()">Voltar</button>
-      <button type="button" id="btnNext" class="btn btn-primary w-100" onclick="next()">Continuar</button>
+      <button type="button" id="btnBack" class="btn btn-outline-secondary w-50 d-none" onclick="back()">
+        Voltar etapa
+      </button>
+
+      <button type="button" id="btnNext" class="btn btn-primary w-100" onclick="next()">
+        Continuar
+      </button>
+
+      <button type="submit" id="btnSave" class="btn btn-primary w-100 d-none">
+        Salvar configuração
+      </button>
     </div>
 
   </form>
 
 </main>
 
-<!-- FOOTER CORRIGIDO -->
-<footer class="footer-app d-flex">
-  <a href="#" class="footer-link active">
-    <i class="bi bi-house-door"></i>
-    Home
-  </a>
-  <a href="#" class="footer-link">
-    <i class="bi bi-clock"></i>
-    Horários
-  </a>
-  <a href="#" class="footer-link">
-    <i class="bi bi-cpu"></i>
-    Dispositivos
-  </a>
-  <a href="#" class="footer-link">
-    <i class="bi bi-person"></i>
-    Perfil
-  </a>
-</footer>
+{% include 'partials/footer-auth.html' %}
 
 <script>
 let step = 1;
+const totalSteps = 5;
 
-function showStep(n){
-  document.querySelectorAll(".step").forEach(s=>s.classList.add("d-none"));
+function voltarPagina() {
+  if (step > 1) {
+    back();
+  } else {
+    window.history.back();
+  }
+}
+
+function updateIndicators(n) {
+  document.querySelectorAll(".step-item").forEach(item => {
+    const itemStep = parseInt(item.dataset.indicator);
+
+    item.classList.remove("active", "done");
+
+    const circle = item.querySelector(".step-circle");
+
+    if (itemStep < n) {
+      item.classList.add("done");
+      circle.innerHTML = '<i class="bi bi-check-lg"></i>';
+    } else if (itemStep === n) {
+      item.classList.add("active");
+      circle.innerText = itemStep;
+    } else {
+      circle.innerText = itemStep;
+    }
+  });
+}
+
+function showStep(n) {
+  document.querySelectorAll(".step").forEach(s => s.classList.add("d-none"));
   document.querySelector(`[data-step="${n}"]`).classList.remove("d-none");
 
-  document.getElementById("progressBar").style.width = (n*20)+"%";
+  document.getElementById("progressBar").style.width = ((n / totalSteps) * 100) + "%";
 
-  document.getElementById("btnBack").classList.toggle("d-none", n===1);
-  document.getElementById("btnNext").innerText = n===5 ? "Finalizar" : "Continuar";
+  document.getElementById("btnBack").classList.toggle("d-none", n === 1);
+  document.getElementById("btnNext").classList.toggle("d-none", n === totalSteps);
+  document.getElementById("btnSave").classList.toggle("d-none", n !== totalSteps);
 
-  if(n===5) resumo();
+  updateIndicators(n);
+
+  if (n === totalSteps) resumo();
 }
 
-function next(){
-  if(step<5){ step++; showStep(step); }
+function validarEtapaAtual() {
+  const currentStep = document.querySelector(`[data-step="${step}"]`);
+  const requiredFields = currentStep.querySelectorAll("[required]");
+
+  for (const field of requiredFields) {
+    if (!field.value.trim()) {
+      field.focus();
+      field.classList.add("is-invalid");
+      return false;
+    }
+
+    field.classList.remove("is-invalid");
+  }
+
+  return true;
 }
 
-function back(){
-  if(step>1){ step--; showStep(step); }
+function next() {
+  if (!validarEtapaAtual()) return;
+
+  if (step < totalSteps) {
+    step++;
+    showStep(step);
+  }
 }
 
-function addHorario(){
-  const hora = document.getElementById("horaInicial").value;
-  if(!hora) return;
+function back() {
+  if (step > 1) {
+    step--;
+    showStep(step);
+  }
+}
 
+function gerarHorarios() {
+  const ciclo = parseInt(document.getElementById("ciclo").value);
+  const horaInicial = document.getElementById("horaInicial").value;
+  const doses = parseInt(document.getElementById("doses").value);
+
+  if (!horaInicial || !doses || doses < 1) return;
+
+  const [h, m] = horaInicial.split(":").map(Number);
+  const base = new Date();
+  base.setHours(h, m);
+
+  const container = document.getElementById("horarios");
+  container.innerHTML = "";
+
+  for (let i = 0; i < doses; i++) {
+    const d = new Date(base);
+    d.setHours(base.getHours() + ciclo * i);
+
+    const hh = String(d.getHours()).padStart(2, "0");
+    const mm = String(d.getMinutes()).padStart(2, "0");
+
+    container.innerHTML += `
+      <div class="d-flex gap-2 mt-2">
+        <input type="time" name="horarios[]" value="${hh}:${mm}" class="form-control form-control-lg">
+        <button type="button" class="btn btn-danger" onclick="this.parentElement.remove()" aria-label="Remover horário">
+          x
+        </button>
+      </div>
+    `;
+  }
+}
+
+function addHorario() {
   document.getElementById("horarios").innerHTML += `
     <div class="d-flex gap-2 mt-2">
-      <input type="time" value="${hora}" class="form-control form-control-lg">
-      <button type="button" class="btn btn-danger" onclick="this.parentElement.remove()">x</button>
-    </div>`;
+      <input type="time" name="horarios[]" class="form-control form-control-lg">
+      <button type="button" class="btn btn-danger" onclick="this.parentElement.remove()" aria-label="Remover horário">
+        x
+      </button>
+    </div>
+  `;
 }
 
-function resumo(){
-  document.getElementById("rCaixa").innerText = document.getElementById("nomeDispositivo").value;
-  document.getElementById("rTratamento").innerText = document.getElementById("nomeTratamento").value;
+function resumo() {
+  document.getElementById("rCaixa").innerText =
+    document.getElementById("nomeDispositivo").value || "Não informado";
 
-  const horarios = [...document.querySelectorAll('#horarios input')]
-    .map(i=>i.value).join(", ");
+  document.getElementById("rTratamento").innerText =
+    document.getElementById("nomeTratamento").value || "Não informado";
 
-  document.getElementById("rHorarios").innerText = horarios;
+  const horarios = [...document.querySelectorAll('[name="horarios[]"]')]
+    .map(i => i.value)
+    .filter(Boolean)
+    .join(", ");
+
+  document.getElementById("rHorarios").innerText = horarios || "Nenhum horário informado";
 }
 
 showStep(step);
