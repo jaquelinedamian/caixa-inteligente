@@ -72,5 +72,42 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+  <script>
+  function initMobileMenu() {
+    const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+    const mobileMenuClose = document.getElementById("mobileMenuClose");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const mobileMenuOverlay = document.getElementById("mobileMenuOverlay");
+
+    if (!mobileMenuToggle || !mobileMenuClose || !mobileMenu || !mobileMenuOverlay) return;
+
+    function openMobileMenu() {
+      mobileMenu.classList.add("is-open");
+      mobileMenuOverlay.classList.add("is-active");
+      mobileMenu.setAttribute("aria-hidden", "false");
+      mobileMenuToggle.setAttribute("aria-expanded", "true");
+      document.body.classList.add("menu-open");
+    }
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove("is-open");
+      mobileMenuOverlay.classList.remove("is-active");
+      mobileMenu.setAttribute("aria-hidden", "true");
+      mobileMenuToggle.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("menu-open");
+    }
+
+    mobileMenuToggle.addEventListener("click", openMobileMenu);
+    mobileMenuClose.addEventListener("click", closeMobileMenu);
+    mobileMenuOverlay.addEventListener("click", closeMobileMenu);
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") closeMobileMenu();
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", initMobileMenu);
+</script>
+
 </body>
 </html>
