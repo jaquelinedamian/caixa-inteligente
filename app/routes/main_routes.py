@@ -340,10 +340,15 @@ def simular_abertura(dispositivo_id):
     horario_previsto_dt = datetime.combine(hoje, horario_mais_proximo.horario)
     minutos = (agora - horario_previsto_dt).total_seconds() / 60
 
+    # Regra de confirmação manual:
+    # - até 15 minutos antes/depois do horário previsto: tomada no horário
+    # - fora dessa janela: dose tomada fora do horário
+    #
+    # O status "atrasada" deve ser reservado para doses que passaram do horário
+    # e ainda não foram confirmadas. Como este projeto não tem rotina automática
+    # de geração de pendências, a confirmação manual não deve criar "atrasada".
     if -15 <= minutos <= 15:
         status = "tomada"
-    elif minutos > 15:
-        status = "atrasada"
     else:
         status = "fora_do_horario"
 
@@ -359,7 +364,7 @@ def simular_abertura(dispositivo_id):
     db.session.add(registro)
     db.session.commit()
 
-    return redirect(url_for("main.historico"))
+    return redirect(url_for("main.home"))
 
 
 @main_bp.route("/init-db")

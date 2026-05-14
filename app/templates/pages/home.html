@@ -265,10 +265,12 @@
 
                   <div class="row g-2">
                     <div class="col-6">
-                      <a href="{{ url_for('main.simular_arduino') }}" class="btn btn-outline-primary w-100 rounded-4">
-                        <i class="bi bi-cpu me-1"></i>
-                        Confirmar dose
-                      </a>
+                      <form method="post" action="{{ url_for('main.simular_abertura', dispositivo_id=dispositivo.id) }}" class="m-0">
+                        <button type="submit" class="btn btn-outline-primary w-100 rounded-4">
+                          <i class="bi bi-check2-circle me-1"></i>
+                          Confirmar dose
+                        </button>
+                      </form>
                     </div>
 
                     <div class="col-6">
