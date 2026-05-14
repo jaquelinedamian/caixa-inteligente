@@ -25,19 +25,28 @@
 
   {% set total_geral = namespace(valor=0) %}
   {% set tomadas_geral = namespace(valor=0) %}
+  {% set tomadas_no_horario_geral = namespace(valor=0) %}
   {% set atrasadas_geral = namespace(valor=0) %}
   {% set fora_geral = namespace(valor=0) %}
 
+  {#
+    Regra de leitura da Home:
+    - status "tomada" = dose tomada no horário;
+    - status "fora_do_horario" = dose também foi tomada, mas fora da janela ideal;
+    - status "atrasada" = dose pendente/atrasada, ainda não confirmada.
+  #}
   {% for dispositivo in dispositivos %}
     {% for registro in dispositivo.registros %}
       {% set total_geral.valor = total_geral.valor + 1 %}
 
       {% if registro.status == "tomada" %}
         {% set tomadas_geral.valor = tomadas_geral.valor + 1 %}
+        {% set tomadas_no_horario_geral.valor = tomadas_no_horario_geral.valor + 1 %}
+      {% elif registro.status == "fora_do_horario" %}
+        {% set tomadas_geral.valor = tomadas_geral.valor + 1 %}
+        {% set fora_geral.valor = fora_geral.valor + 1 %}
       {% elif registro.status == "atrasada" %}
         {% set atrasadas_geral.valor = atrasadas_geral.valor + 1 %}
-      {% elif registro.status == "fora_do_horario" %}
-        {% set fora_geral.valor = fora_geral.valor + 1 %}
       {% endif %}
     {% endfor %}
   {% endfor %}
@@ -93,7 +102,7 @@
               {% endif %}
             </h2>
             <p class="text-secondary mb-0">
-              {{ tomadas_geral.valor }} de {{ total_geral.valor }} doses tomadas
+              {{ tomadas_geral.valor }} de {{ total_geral.valor }} doses confirmadas
             </p>
           </div>
         </div>
@@ -120,7 +129,7 @@
           {% elif total_geral.valor == 0 %}
             Ainda não há registros. Simule uma abertura para começar o acompanhamento.
           {% else %}
-            Atenção: há muitas doses perdidas ou fora do horário.
+            Atenção: há doses pendentes ou tomadas fora do horário ideal.
           {% endif %}
         </p>
 
@@ -133,6 +142,7 @@
           <div class="card-body">
             <div class="small text-secondary">Tomadas</div>
             <div class="h3 fw-bold text-success mb-0">{{ tomadas_geral.valor }}</div>
+            <div class="small text-secondary">Inclui fora do horário</div>
           </div>
         </div>
       </div>
@@ -194,7 +204,9 @@
       <div class="row g-3">
         {% for dispositivo in dispositivos %}
           {% set total_registros = dispositivo.registros|length %}
-          {% set tomadas = dispositivo.registros|selectattr("status", "equalto", "tomada")|list|length %}
+          {% set tomadas_no_horario = dispositivo.registros|selectattr("status", "equalto", "tomada")|list|length %}
+          {% set tomadas_fora_horario = dispositivo.registros|selectattr("status", "equalto", "fora_do_horario")|list|length %}
+          {% set tomadas = tomadas_no_horario + tomadas_fora_horario %}
           {% set percentual = ((tomadas / total_registros) * 100)|round(0, "floor") if total_registros > 0 else 0 %}
 
           <div class="col-12 col-lg-6" id="caixa-{{ dispositivo.id }}">
@@ -264,16 +276,26 @@
                   </a>
 
                   <div class="row g-2">
-                    <div class="col-6">
+                    <div class="col-12 col-md-6">
                       <form method="post" action="{{ url_for('main.simular_abertura', dispositivo_id=dispositivo.id) }}" class="m-0">
                         <button type="submit" class="btn btn-outline-primary w-100 rounded-4">
                           <i class="bi bi-check2-circle me-1"></i>
-                          Confirmar dose
+                          Confirmar dose agora
                         </button>
                       </form>
                     </div>
 
-                    <div class="col-6">
+                    <div class="col-12 col-md-6">
+                      <form method="post" action="{{ url_for('main.simular_abertura', dispositivo_id=dispositivo.id) }}" class="m-0">
+                        <input type="hidden" name="modo_simulacao" value="tomada_no_horario">
+                        <button type="submit" class="btn btn-outline-success w-100 rounded-4">
+                          <i class="bi bi-stopwatch me-1"></i>
+                          Simular no horário
+                        </button>
+                      </form>
+                    </div>
+
+                    <div class="col-12">
                       <a href="{{ url_for('main.historico') }}" class="btn btn-outline-secondary w-100 rounded-4">
                         <i class="bi bi-clock-history me-1"></i>
                         Histórico
@@ -323,7 +345,7 @@
 
 <script>
   const totalEventos = {{ total_geral.valor }};
-  const tomadas = {{ tomadas_geral.valor }};
+  const tomadas = {{ tomadas_no_horario_geral.valor }};
   const atrasadas = {{ atrasadas_geral.valor }};
   const foraHorario = {{ fora_geral.valor }};
 
@@ -333,7 +355,7 @@
     new Chart(canvas, {
       type: "doughnut",
       data: {
-        labels: ["Tomadas", "Atrasadas", "Fora do horário"],
+        labels: ["Tomadas no horário", "Atrasadas pendentes", "Tomadas fora do horário"],
         datasets: [{
           data: [tomadas, atrasadas, foraHorario],
           backgroundColor: ["#20c997", "#ffc107", "#dc3545"],

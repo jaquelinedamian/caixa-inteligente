@@ -339,25 +339,31 @@ def simular_abertura(dispositivo_id):
 
     horario_previsto_dt = datetime.combine(hoje, horario_mais_proximo.horario)
     minutos = (agora - horario_previsto_dt).total_seconds() / 60
+    modo_simulacao = request.form.get("modo_simulacao")
 
     # Regra de confirmação manual:
-    # - até 15 minutos antes/depois do horário previsto: tomada no horário
-    # - fora dessa janela: dose tomada fora do horário
+    # - até 15 minutos antes/depois do horário previsto: tomada no horário;
+    # - fora dessa janela: dose tomada fora do horário;
+    # - botão de simulação: força uma dose tomada exatamente no horário previsto.
     #
-    # O status "atrasada" deve ser reservado para doses que passaram do horário
-    # e ainda não foram confirmadas. Como este projeto não tem rotina automática
-    # de geração de pendências, a confirmação manual não deve criar "atrasada".
-    if -15 <= minutos <= 15:
+    # Importante: dose tomada fora do horário continua sendo uma dose tomada.
+    # A Home contabiliza esse registro em "Tomadas" e também em "Fora do horário".
+    if modo_simulacao == "tomada_no_horario":
         status = "tomada"
+        aberto_em = horario_previsto_dt
+    elif -15 <= minutos <= 15:
+        status = "tomada"
+        aberto_em = agora
     else:
         status = "fora_do_horario"
+        aberto_em = agora
 
     registro = RegistroDose(
         dispositivo_id=dispositivo.id,
         horario_id=horario_mais_proximo.id,
         data_prevista=hoje,
         horario_previsto=horario_mais_proximo.horario,
-        aberto_em=agora,
+        aberto_em=aberto_em,
         status=status
     )
 
